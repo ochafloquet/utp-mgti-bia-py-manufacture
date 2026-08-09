@@ -1,0 +1,2 @@
+total_registros,tasa_falla_pct,accuracy_logistica,precision_logistica,recall_logistica,f1_logistica,auc_roc_logistica,accuracy_arbol,f1_arbol,auc_roc_arbol,r2_regresion_lineal,rmse_regresion_lineal,silhouette_kmeans,clusters_identificados,maquinas_alto_riesgo_n,maquinas_alto_riesgo_pct
+1000,38.5,0.695,0.593,0.6623,0.6258,0.7611,0.6,0.5745,0.6496,-0.0087,180.98,0.082,4,242,24.2

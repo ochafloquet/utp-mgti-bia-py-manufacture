@@ -1,0 +1,59 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Distribution / packaging
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+*.ipynb
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# R project files (not used in this Python project)
+*.Rproj
+*.Rproj.user/
+.Rhistory
+.RData
+
+# Resultados generados (no versionar archivos grandes)
+resultados/manufactura/*.png
+resultados/manufactura/*.pkl
+resultados/manufactura/*.pkl
+resultados/manufactura/encoder_*.pkl
+resultados/manufactura/scaler*.pkl
+resultados/manufactura/modelo_*.pkl
+
+# Mantener CSVs de resultados y el informe HTML
+!resultados/manufactura/*.csv
+!docs/INFORME_MANUFACTURA.html
+
+# Logs
+*.log
+*.tmp
+
+# Datos sensibles
+*.env
+.env

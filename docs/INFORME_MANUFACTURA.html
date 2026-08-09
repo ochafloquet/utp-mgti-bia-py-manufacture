@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informe Manufactura — UTP BIA</title>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Open+Sans:wght@400;600&display=swap');
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+        font-family: 'Open Sans', Arial, sans-serif;
+        font-size: 11pt;
+        line-height: 1.7;
+        color: #2c3e50;
+        background: #fff;
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 2cm 2.5cm;
+    }
+    h1 {
+        font-family: 'Merriweather', serif;
+        font-size: 20pt;
+        color: #1a252f;
+        border-bottom: 3px solid #2980b9;
+        padding-bottom: 10px;
+        margin: 30px 0 20px;
+        page-break-before: always;
+    }
+    h1:first-of-type { page-break-before: avoid; }
+    h2 {
+        font-size: 15pt;
+        color: #2980b9;
+        margin: 25px 0 12px;
+        border-left: 4px solid #2980b9;
+        padding-left: 10px;
+    }
+    h3 {
+        font-size: 12pt;
+        color: #34495e;
+        margin: 20px 0 8px;
+        font-weight: 600;
+    }
+    p { margin: 0 0 10px; text-align: justify; }
+    ul, ol { margin: 8px 0 12px 25px; }
+    li { margin-bottom: 4px; }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 15px 0 20px;
+        font-size: 10pt;
+    }
+    th {
+        background: #2980b9;
+        color: white;
+        padding: 8px 10px;
+        text-align: left;
+        font-weight: 600;
+    }
+    td {
+        padding: 7px 10px;
+        border-bottom: 1px solid #ecf0f1;
+    }
+    tr:nth-child(even) td { background: #f8f9fa; }
+    code {
+        background: #f4f6f8;
+        padding: 2px 6px;
+        border-radius: 3px;
+        font-family: 'Courier New', monospace;
+        font-size: 9pt;
+    }
+    pre {
+        background: #1e272e;
+        color: #dfe6e9;
+        padding: 15px;
+        border-radius: 6px;
+        overflow-x: auto;
+        margin: 15px 0;
+    }
+    pre code { background: none; color: inherit; padding: 0; }
+    blockquote {
+        border-left: 4px solid #2980b9;
+        background: #eaf4fd;
+        padding: 10px 15px;
+        margin: 15px 0;
+        border-radius: 0 4px 4px 0;
+    }
+    strong { color: #1a252f; }
+    .portada {
+        text-align: center;
+        padding: 60px 0;
+        border-bottom: 2px solid #2980b9;
+        margin-bottom: 40px;
+    }
+    @media print {
+        body { padding: 1cm 1.5cm; }
+        h1 { page-break-before: always; }
+        h1:first-of-type { page-break-before: avoid; }
+        table { page-break-inside: avoid; }
+    }
+    </style>
+</head>
+<body>
+<h1 id="informe-ejecutivo-optimizacion-de-operaciones-industriales-mediante-analitica-predictiva-multi-tecnica">INFORME EJECUTIVO: OPTIMIZACIÓN DE OPERACIONES INDUSTRIALES MEDIANTE ANALÍTICA PREDICTIVA MULTI-TÉCNICA</h1>
+<h2 id="portada">PORTADA</h2>
+<p><strong>Universidad Tecnológica del Perú</strong><br />
+<strong>Maestría en Gerencia de TI y Transformación Digital</strong><br />
+<strong>Curso:</strong> Business Intelligence &amp; Analytics — Sesión 60271<br />
+<strong>Proyecto Final:</strong> Optimización de operaciones industriales mediante analítica predictiva multi-técnica<br />
+<strong>Sector de aplicación:</strong> Manufactura industrial en Lima, Arequipa y Trujillo, Perú<br />
+<strong>Integrantes:</strong><br />
+- [Nombre del Integrante 1]<br />
+- [Nombre del Integrante 2]<br />
+- [Nombre del Integrante 3]<br />
+- [Nombre del Integrante 4]<br />
+<strong>Docente:</strong> [Nombre del Docente]<br />
+<strong>Fecha:</strong> Agosto 2025<br />
+<strong>Lugar:</strong> Lima, Perú</p>
+<hr />
+<h2 id="resumen-ejecutivo">RESUMEN EJECUTIVO</h2>
+<p>El presente informe desarrolla un proyecto académico de Business Intelligence &amp; Analytics orientado al sector manufacturero industrial peruano, con cobertura en plantas ubicadas en Lima, Arequipa y Trujillo. El problema central analizado es una tasa de falla de maquinaria de <strong>38.5%</strong>, equivalente a 385 eventos de falla sobre un total de 1,000 registros operacionales capturados en <strong>180 máquinas</strong>. Esta magnitud de incidencia implica un nivel significativo de paradas no planificadas, afectación de la continuidad productiva, incremento de costos de mantenimiento correctivo y presión sobre la calidad operativa.</p>
+<p>Con el propósito de transformar datos operativos en decisiones accionables, se aplicó la metodología <strong>CRISP-DM</strong>, estructurando el trabajo en seis fases: entendimiento del negocio, entendimiento de los datos, preparación de datos, modelado, evaluación y despliegue analítico. Sobre esta base metodológica, se implementaron cuatro técnicas complementarias en Python usando <strong>pandas, scikit-learn, seaborn, matplotlib y streamlit</strong>: <strong>regresión logística binaria</strong> para predecir fallas, <strong>clustering K-Means</strong> para segmentar perfiles operativos, <strong>árbol de decisión</strong> para generar reglas interpretables y <strong>regresión lineal múltiple</strong> para explorar la relación entre variables operativas y producción.</p>
+<p>El dataset evaluado contiene <strong>15 variables</strong>, integrando identificadores, atributos categóricos del contexto operativo y mediciones numéricas de desempeño. Entre las variables más relevantes destacan la temperatura, vibración, presión, horas de operación, antigüedad, días desde el último mantenimiento, tasa de defectos, consumo energético y producción. En términos de calidad, los datos presentaron una condición favorable para el modelado: <strong>0 valores nulos</strong> y <strong>0 registros duplicados</strong>. La fase de preparación incluyó codificación de variables categóricas, estandarización para los modelos sensibles a escala y partición de entrenamiento/prueba de <strong>80%/20%</strong>, con estratificación en los modelos de clasificación.</p>
+<p>Los resultados confirman que la analítica predictiva puede aportar valor concreto a la gestión del mantenimiento. El mejor desempeño correspondió a la <strong>regresión logística</strong>, con <strong>Accuracy de 69.5%</strong>, <strong>Precision de 59.3%</strong>, <strong>Recall de 66.2%</strong>, <strong>F1 de 62.6%</strong>, <strong>AUC-ROC de 0.761</strong> y validación cruzada de <strong>73.0%</strong>. En lenguaje de negocio, esto significa que el modelo logra discriminar razonablemente entre condiciones normales y condiciones de falla, identificando aproximadamente <strong>66 de cada 100 fallas reales</strong>. Complementariamente, el <strong>árbol de decisión</strong> obtuvo <strong>Recall de 70.1%</strong> y <strong>AUC-ROC de 0.650</strong>, con menor exactitud global (<strong>60.0%</strong>), pero mayor interpretabilidad, mostrando que la <strong>vibración (44.9%)</strong>, los <strong>días desde mantenimiento (24.9%)</strong> y la <strong>temperatura (15.9%)</strong> son los factores más determinantes.</p>
+<p>El análisis de correlaciones refuerza estos hallazgos. Las relaciones más altas con la variable objetivo <code>falla_maquina</code> fueron <strong>temperatura_c (0.303)</strong>, <strong>vibracion_mm_s (0.298)</strong> y <strong>dias_desde_mantenimiento (0.271)</strong>. A nivel operativo, también se observaron diferencias por turno: la tasa de falla fue <strong>42.86% en turno tarde</strong>, <strong>40.44% en turno noche</strong> y <strong>32.46% en turno mañana</strong>, lo que sugiere un patrón de riesgo vinculado con carga operativa, fatiga, continuidad de uso o menor oportunidad de intervención preventiva durante ciertos horarios.</p>
+<p>La segmentación con <strong>K-Means (k = 4)</strong>, aunque mostró un <strong>Silhouette de 0.082</strong> —indicando separación estadística débil entre clusters—, permitió construir una clasificación gerencial útil: <strong>Eficientes (22.9% de falla)</strong>, <strong>Estándar (32.0%)</strong>, <strong>Alerta (47.0%)</strong> y <strong>Críticas (57.5%)</strong>. Esta tipología facilita priorizar acciones diferenciadas según perfil operativo. Asimismo, el sistema identificó <strong>242 registros de alto riesgo</strong> con probabilidad estimada de falla superior al 70%, asociados a <strong>137 máquinas únicas</strong>, lo cual constituye una base concreta para campañas focalizadas de mantenimiento.</p>
+<p>Finalmente, la <strong>regresión lineal múltiple</strong> sobre producción obtuvo <strong>R² = -0.009</strong> y <strong>RMSE = 181 unidades</strong>, evidenciando que la producción no mantiene una relación lineal significativa con las variables operativas incluidas. Lejos de ser un hallazgo negativo, este resultado revela que la productividad industrial depende también de factores no capturados en el dataset, tales como habilidad del operador, calidad de materia prima, cambios de lote, programación de producción, paradas logísticas, mix de productos y disciplina operativa.</p>
+<p>Como conclusión ejecutiva, el proyecto demuestra que la organización puede pasar de una gestión reactiva a una gestión preventiva basada en datos. Las principales recomendaciones son: intervenir prioritariamente las <strong>242 observaciones de alto riesgo</strong>, redefinir frecuencias de mantenimiento cuando la vibración supere <strong>5.45 mm/s</strong> o el equipo acumule más de <strong>165 días</strong> sin mantenimiento, implantar un esquema de alertas por riesgo, y ampliar la captura de variables para mejorar modelos de producción y mantenimiento. En términos de negocio, incluso una reducción parcial de fallas en los segmentos <strong>Alerta</strong> y <strong>Críticas</strong> podría generar mejoras relevantes en disponibilidad, confiabilidad y costo total de operación.</p>
+<h2 id="1-introduccion">1. INTRODUCCIÓN</h2>
+<h3 id="11-contexto-industrial">1.1 Contexto Industrial</h3>
+<p>La manufactura industrial enfrenta actualmente una presión creciente por operar con alta disponibilidad, bajos niveles de desperdicio, costos controlados y calidad consistente. En ese contexto, la gestión de activos productivos se vuelve una capacidad estratégica, dado que una falla de máquina no solo interrumpe el flujo productivo, sino que también altera programas de entrega, genera reprocesos y reduce la eficiencia global del sistema.</p>
+<p>En el caso analizado, la operación se distribuye en tres plantas peruanas: <strong>Lima, Arequipa y Trujillo</strong>. El parque industrial comprende <strong>180 máquinas</strong> pertenecientes a cinco categorías operativas: <strong>Prensa, Torno CNC, Inyectora, Empacadora y Compresor</strong>. Esta diversidad de activos hace necesario adoptar un enfoque analítico capaz de capturar patrones compartidos y, al mismo tiempo, diferencias entre tipos de equipo, ubicación y turno.</p>
+<h3 id="12-problema-de-negocio">1.2 Problema de Negocio</h3>
+<p>El problema de negocio se centra en una tasa de falla de <strong>38.5%</strong>, valor elevado para una operación industrial que depende de la continuidad del servicio de maquinaria. Este nivel de incidencia sugiere una exposición material a:</p>
+<ul>
+<li>paradas no planificadas;</li>
+<li>incremento del mantenimiento correctivo;</li>
+<li>afectación de la productividad y del cumplimiento de órdenes;</li>
+<li>posible elevación de defectos y merma;</li>
+<li>consumo energético ineficiente por degradación operativa.</li>
+</ul>
+<p>Por ello, la pregunta analítica principal es: <strong>¿qué variables operativas explican mejor las fallas de maquinaria y cómo pueden utilizarse para priorizar mantenimiento y mejorar decisiones gerenciales?</strong></p>
+<h3 id="13-objetivos-del-analisis">1.3 Objetivos del Análisis</h3>
+<p><strong>Objetivo general:</strong><br />
+Desarrollar un análisis de Business Intelligence &amp; Analytics basado en CRISP-DM para comprender, predecir y priorizar el riesgo de falla de maquinaria en una operación manufacturera industrial.</p>
+<p><strong>Objetivos específicos:</strong></p>
+<ol>
+<li>Caracterizar el comportamiento del dataset y evaluar su calidad.</li>
+<li>Identificar variables con mayor relación con la falla de maquinaria.</li>
+<li>Construir un modelo de clasificación para predecir fallas.</li>
+<li>Segmentar perfiles operativos mediante clustering.</li>
+<li>Obtener reglas interpretables de decisión para mantenimiento.</li>
+<li>Evaluar si la producción se explica linealmente por variables operativas.</li>
+<li>Traducir hallazgos analíticos a recomendaciones gerenciales accionables.</li>
+</ol>
+<h3 id="14-alcance-y-limitaciones">1.4 Alcance y Limitaciones</h3>
+<p>El análisis cubre <strong>1,000 registros operativos</strong>, tres plantas y cinco tipos de máquina. El alcance incluye modelado supervisado y no supervisado, interpretación de métricas y diseño conceptual de un sistema de alertas.</p>
+<p>Las principales limitaciones son:</p>
+<ul>
+<li>el dataset representa una foto analítica y no una serie temporal continua;</li>
+<li>la variable de producción no incorpora factores exógenos relevantes;</li>
+<li>el clustering presenta separación estadística baja;</li>
+<li>los resultados son adecuados para priorización operativa, pero no sustituyen validación técnica en planta.</li>
+</ul>
+<h2 id="2-marco-teorico">2. MARCO TEÓRICO</h2>
+<h3 id="21-regresion-logistica-binaria">2.1 Regresión Logística Binaria</h3>
+<p>La regresión logística binaria es una técnica de clasificación supervisada utilizada cuando la variable objetivo adopta dos estados mutuamente excluyentes, en este caso <strong>falla</strong> y <strong>no falla</strong>. Su valor en entornos industriales radica en que estima probabilidades, lo cual permite construir esquemas de alertamiento por umbrales de riesgo. A diferencia de una clasificación rígida, este enfoque facilita priorizar activos según criticidad.</p>
+<p>Desde la perspectiva gerencial, métricas como <strong>recall</strong> y <strong>AUC-ROC</strong> son particularmente importantes. El recall mide la capacidad de detectar fallas reales; en mantenimiento, omitir una falla puede ser más costoso que generar una alerta preventiva adicional.</p>
+<h3 id="22-analisis-de-clustering-k-means">2.2 Análisis de Clustering (K-Means)</h3>
+<p>K-Means es una técnica no supervisada que agrupa observaciones similares de acuerdo con su proximidad en el espacio de variables. En operaciones industriales, su utilidad no consiste en “predecir” una falla, sino en identificar <strong>perfiles operativos</strong> que permitan diferenciar máquinas eficientes, intermedias o críticas. De esta forma, la segmentación complementa la clasificación, aportando una visión táctica para intervenciones escalonadas.</p>
+<p>El índice <strong>Silhouette</strong> evalúa la separación entre grupos. Un valor bajo, como el observado en este estudio, no invalida el análisis, pero obliga a interpretar los clusters como segmentos gerenciales útiles más que como categorías naturales fuertemente separadas.</p>
+<h3 id="23-arbol-de-decision">2.3 Árbol de Decisión</h3>
+<p>El árbol de decisión es un modelo supervisado altamente apreciado en gestión porque transforma relaciones complejas en reglas comprensibles. Su estructura jerárquica permite contestar preguntas del tipo: <strong>si la vibración es alta y el tiempo sin mantenimiento excede cierto umbral, ¿cuál es el riesgo esperado?</strong></p>
+<p>En proyectos de analítica aplicada, los árboles son valiosos aun cuando su precisión no supere a otros modelos, ya que favorecen la adopción por parte de usuarios no técnicos, supervisores de mantenimiento y jefaturas de planta.</p>
+<h3 id="24-regresion-lineal-multiple">2.4 Regresión Lineal Múltiple</h3>
+<p>La regresión lineal múltiple busca explicar una variable cuantitativa —en este caso, la producción— a partir de múltiples predictores. En manufactura suele emplearse para evaluar sensibilidad y relación entre carga operativa, consumo energético, variables de proceso y output productivo.</p>
+<p>Cuando el coeficiente de determinación <strong>R²</strong> es cercano a cero o negativo, se interpreta que el conjunto de variables observadas no explica adecuadamente el fenómeno bajo un supuesto lineal. Este resultado puede ser tan valioso como uno positivo, pues señala la necesidad de ampliar la medición del proceso.</p>
+<h3 id="25-metodologia-crisp-dm">2.5 Metodología CRISP-DM</h3>
+<p>CRISP-DM (<strong>Cross Industry Standard Process for Data Mining</strong>) es una metodología ampliamente utilizada para estructurar proyectos analíticos de manera ordenada y reproducible. Sus fases son:</p>
+<ol>
+<li><strong>Entendimiento del negocio</strong></li>
+<li><strong>Entendimiento de los datos</strong></li>
+<li><strong>Preparación de los datos</strong></li>
+<li><strong>Modelado</strong></li>
+<li><strong>Evaluación</strong></li>
+<li><strong>Despliegue</strong></li>
+</ol>
+<p>Su principal aporte en este proyecto es asegurar que el modelado no se quede en resultados estadísticos aislados, sino que se conecte con decisiones de negocio como priorización de mantenimiento, diseño de alertas y seguimiento operativo.</p>
+<h2 id="3-descripcion-de-los-datos">3. DESCRIPCIÓN DE LOS DATOS</h2>
+<h3 id="31-caracteristicas-del-dataset">3.1 Características del Dataset</h3>
+<p>El conjunto de datos está conformado por <strong>1,000 registros operacionales</strong> de <strong>180 máquinas</strong> distribuidas en tres plantas. Cada registro representa una observación del estado operativo de un equipo en un contexto de planta, tipo de máquina y turno.</p>
+<p><strong>Resumen general del dataset</strong></p>
+<table>
+<thead>
+<tr>
+<th>Indicador</th>
+<th style="text-align: right;">Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Registros</td>
+<td style="text-align: right;">1,000</td>
+</tr>
+<tr>
+<td>Máquinas únicas</td>
+<td style="text-align: right;">180</td>
+</tr>
+<tr>
+<td>Variables totales</td>
+<td style="text-align: right;">15</td>
+</tr>
+<tr>
+<td>Variables categóricas</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr>
+<td>Variables numéricas</td>
+<td style="text-align: right;">9</td>
+</tr>
+<tr>
+<td>Variable objetivo binaria</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td>Tasa global de falla</td>
+<td style="text-align: right;">38.5%</td>
+</tr>
+<tr>
+<td>Plantas</td>
+<td style="text-align: right;">Lima, Arequipa, Trujillo</td>
+</tr>
+<tr>
+<td>Tipos de máquina</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr>
+<td>Turnos</td>
+<td style="text-align: right;">Mañana, Tarde, Noche</td>
+</tr>
+</tbody>
+</table>
+<h3 id="32-diccionario-de-datos">3.2 Diccionario de Datos</h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Tipo</th>
+<th>Descripción</th>
+<th>Rango / Categorías</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id_registro</td>
+<td>Categórica</td>
+<td>Identificador único del registro operacional</td>
+<td>Ej.: MAN-0001</td>
+</tr>
+<tr>
+<td>id_maquina</td>
+<td>Categórica</td>
+<td>Identificador de la máquina observada</td>
+<td>Ej.: MQ-097</td>
+</tr>
+<tr>
+<td>planta</td>
+<td>Categórica</td>
+<td>Sede industrial donde opera la máquina</td>
+<td>Lima, Arequipa, Trujillo</td>
+</tr>
+<tr>
+<td>tipo_maquina</td>
+<td>Categórica</td>
+<td>Familia tecnológica del activo</td>
+<td>Prensa, Torno CNC, Inyectora, Empacadora, Compresor</td>
+</tr>
+<tr>
+<td>turno</td>
+<td>Categórica</td>
+<td>Turno de operación</td>
+<td>Mañana, Tarde, Noche</td>
+</tr>
+<tr>
+<td>temperatura_c</td>
+<td>Numérica</td>
+<td>Temperatura de operación del equipo en °C</td>
+<td>45.0 a 108.9</td>
+</tr>
+<tr>
+<td>vibracion_mm_s</td>
+<td>Numérica</td>
+<td>Vibración medida en mm/s</td>
+<td>0.5 a 9.4</td>
+</tr>
+<tr>
+<td>presion_bar</td>
+<td>Numérica</td>
+<td>Presión de operación en bar</td>
+<td>2.88 a 10.04</td>
+</tr>
+<tr>
+<td>horas_operacion</td>
+<td>Numérica</td>
+<td>Horas acumuladas de operación</td>
+<td>141 a 11,977</td>
+</tr>
+<tr>
+<td>antiguedad_anios</td>
+<td>Numérica</td>
+<td>Antigüedad del equipo en años</td>
+<td>0.2 a 11.0</td>
+</tr>
+<tr>
+<td>dias_desde_mantenimiento</td>
+<td>Numérica</td>
+<td>Días transcurridos desde el último mantenimiento</td>
+<td>1 a 240</td>
+</tr>
+<tr>
+<td>produccion_unidades</td>
+<td>Numérica</td>
+<td>Producción obtenida en unidades</td>
+<td>244 a 1,396</td>
+</tr>
+<tr>
+<td>tasa_defectos_pct</td>
+<td>Numérica</td>
+<td>Porcentaje de defectos del proceso</td>
+<td>0.1% a 9.05%</td>
+</tr>
+<tr>
+<td>consumo_energia_kwh</td>
+<td>Numérica</td>
+<td>Consumo energético del equipo en kWh</td>
+<td>247.23 a 950.39</td>
+</tr>
+<tr>
+<td>falla_maquina</td>
+<td>Binaria</td>
+<td>Indicador de falla observada</td>
+<td>0 = no falla, 1 = falla</td>
+</tr>
+</tbody>
+</table>
+<h3 id="33-estadisticas-descriptivas">3.3 Estadísticas Descriptivas</h3>
+<p>Las estadísticas descriptivas muestran un parque de maquinaria con dispersión operativa relevante. La temperatura promedio fue <strong>73.49 °C</strong>, la vibración promedio <strong>4.26 mm/s</strong> y los días promedio desde mantenimiento <strong>122.16</strong>. La amplitud de rangos sugiere coexistencia de máquinas en condiciones sanas y otras claramente tensionadas.</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th style="text-align: right;">Media</th>
+<th style="text-align: right;">Desv. Est.</th>
+<th style="text-align: right;">Mínimo</th>
+<th style="text-align: right;">Q1</th>
+<th style="text-align: right;">Mediana</th>
+<th style="text-align: right;">Q3</th>
+<th style="text-align: right;">Máximo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>temperatura_c</td>
+<td style="text-align: right;">73.49</td>
+<td style="text-align: right;">10.04</td>
+<td style="text-align: right;">45.00</td>
+<td style="text-align: right;">66.50</td>
+<td style="text-align: right;">73.50</td>
+<td style="text-align: right;">80.12</td>
+<td style="text-align: right;">108.90</td>
+</tr>
+<tr>
+<td>vibracion_mm_s</td>
+<td style="text-align: right;">4.26</td>
+<td style="text-align: right;">1.69</td>
+<td style="text-align: right;">0.50</td>
+<td style="text-align: right;">3.13</td>
+<td style="text-align: right;">4.26</td>
+<td style="text-align: right;">5.42</td>
+<td style="text-align: right;">9.40</td>
+</tr>
+<tr>
+<td>presion_bar</td>
+<td style="text-align: right;">6.57</td>
+<td style="text-align: right;">1.18</td>
+<td style="text-align: right;">2.88</td>
+<td style="text-align: right;">5.75</td>
+<td style="text-align: right;">6.59</td>
+<td style="text-align: right;">7.41</td>
+<td style="text-align: right;">10.04</td>
+</tr>
+<tr>
+<td>horas_operacion</td>
+<td style="text-align: right;">6,140.59</td>
+<td style="text-align: right;">3,413.22</td>
+<td style="text-align: right;">141</td>
+<td style="text-align: right;">3,221.50</td>
+<td style="text-align: right;">6,324</td>
+<td style="text-align: right;">9,113</td>
+<td style="text-align: right;">11,977</td>
+</tr>
+<tr>
+<td>antiguedad_anios</td>
+<td style="text-align: right;">4.41</td>
+<td style="text-align: right;">2.35</td>
+<td style="text-align: right;">0.20</td>
+<td style="text-align: right;">2.60</td>
+<td style="text-align: right;">4.50</td>
+<td style="text-align: right;">6.20</td>
+<td style="text-align: right;">11.00</td>
+</tr>
+<tr>
+<td>dias_desde_mantenimiento</td>
+<td style="text-align: right;">122.16</td>
+<td style="text-align: right;">68.90</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">65</td>
+<td style="text-align: right;">122</td>
+<td style="text-align: right;">182</td>
+<td style="text-align: right;">240</td>
+</tr>
+<tr>
+<td>tasa_defectos_pct</td>
+<td style="text-align: right;">3.02</td>
+<td style="text-align: right;">1.43</td>
+<td style="text-align: right;">0.10</td>
+<td style="text-align: right;">2.01</td>
+<td style="text-align: right;">3.04</td>
+<td style="text-align: right;">3.92</td>
+<td style="text-align: right;">9.05</td>
+</tr>
+<tr>
+<td>consumo_energia_kwh</td>
+<td style="text-align: right;">580.75</td>
+<td style="text-align: right;">116.55</td>
+<td style="text-align: right;">247.23</td>
+<td style="text-align: right;">503.80</td>
+<td style="text-align: right;">579.07</td>
+<td style="text-align: right;">654.26</td>
+<td style="text-align: right;">950.39</td>
+</tr>
+<tr>
+<td>produccion_unidades</td>
+<td style="text-align: right;">845.93</td>
+<td style="text-align: right;">179.47</td>
+<td style="text-align: right;">244</td>
+<td style="text-align: right;">718</td>
+<td style="text-align: right;">848</td>
+<td style="text-align: right;">971</td>
+<td style="text-align: right;">1,396</td>
+</tr>
+</tbody>
+</table>
+<h3 id="34-calidad-de-datos">3.4 Calidad de Datos</h3>
+<p>La evaluación de calidad evidenció una base robusta para el desarrollo del proyecto:</p>
+<table>
+<thead>
+<tr>
+<th>Criterio</th>
+<th style="text-align: right;">Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Valores nulos totales</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>Registros duplicados</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>Consistencia de categorías</td>
+<td style="text-align: right;">Correcta</td>
+</tr>
+<tr>
+<td>Variables numéricas fuera de rango</td>
+<td style="text-align: right;">No críticas</td>
+</tr>
+<tr>
+<td>Preparación adicional requerida</td>
+<td style="text-align: right;">Codificación y escalamiento</td>
+</tr>
+</tbody>
+</table>
+<p>En consecuencia, no fue necesario aplicar imputación, depuración agresiva ni eliminación de registros. Esto mejora la confiabilidad del análisis y reduce sesgos por tratamiento de datos faltantes.</p>
+<h2 id="4-preparacion-de-datos">4. PREPARACIÓN DE DATOS</h2>
+<h3 id="41-limpieza-realizada">4.1 Limpieza Realizada</h3>
+<p>La fase de preparación estuvo orientada principalmente a adecuar el dataset para el modelado. Dado que la calidad estructural era buena, la limpieza se centró en verificar integridad, asegurar tipos de dato consistentes y preparar columnas para consumo de algoritmos.</p>
+<p>Las variables categóricas <code>planta</code>, <code>tipo_maquina</code> y <code>turno</code> fueron codificadas mediante <strong>Label Encoding</strong>, generando las columnas <code>planta_cod</code>, <code>tipo_maquina_cod</code> y <code>turno_cod</code>. Este paso permitió integrar información contextual al modelo sin perder trazabilidad del significado original.</p>
+<h3 id="42-transformaciones-aplicadas">4.2 Transformaciones Aplicadas</h3>
+<p>Las principales transformaciones fueron:</p>
+<ul>
+<li>codificación de variables categóricas;</li>
+<li>estandarización de variables predictoras para <strong>regresión logística</strong> y <strong>K-Means</strong>;</li>
+<li>definición de conjuntos de variables específicos según técnica;</li>
+<li>exportación de datasets limpios y artefactos del modelo para reutilización.</li>
+</ul>
+<p>Las variables empleadas en los modelos de falla fueron: temperatura, vibración, presión, horas de operación, antigüedad, días desde mantenimiento, tasa de defectos, consumo energético y variables codificadas de planta, tipo de máquina y turno.</p>
+<h3 id="43-particion-traintest">4.3 Partición Train/Test</h3>
+<p>Para los modelos de clasificación se utilizó una partición <strong>80% entrenamiento / 20% prueba</strong>, equivalente a <strong>800 registros para entrenamiento</strong> y <strong>200 para prueba</strong>, con <strong>estratificación por la variable <code>falla_maquina</code></strong>. Esta decisión preserva la proporción de fallas en ambos subconjuntos y mejora la validez comparativa de resultados.</p>
+<p>En el caso de la regresión lineal múltiple se aplicó igualmente una división <strong>80/20</strong>, sin estratificación, por tratarse de una variable objetivo continua.</p>
+<h2 id="5-analisis-exploratorio">5. ANÁLISIS EXPLORATORIO</h2>
+<h3 id="51-distribucion-de-la-variable-objetivo">5.1 Distribución de la Variable Objetivo</h3>
+<p>La variable <code>falla_maquina</code> presenta <strong>38.5% de eventos de falla</strong> y <strong>61.5% de no falla</strong>. Si bien no se trata de una distribución extremadamente desbalanceada, sí representa un problema de negocio crítico: casi <strong>4 de cada 10 observaciones</strong> reflejan una condición fallida.</p>
+<p>Desde la perspectiva gerencial, este nivel de incidencia justifica plenamente una estrategia de mantenimiento predictivo, ya que la frecuencia de ocurrencia excede lo esperable para una operación madura y controlada.</p>
+<h3 id="52-analisis-por-planta-y-turno">5.2 Análisis por Planta y Turno</h3>
+<p>Las diferencias por planta son moderadas, pero por turno resultan más marcadas.</p>
+<p><strong>Tasa de falla por planta</strong></p>
+<table>
+<thead>
+<tr>
+<th>Planta</th>
+<th style="text-align: right;">Registros</th>
+<th style="text-align: right;">Tasa de falla</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lima</td>
+<td style="text-align: right;">341</td>
+<td style="text-align: right;">36.07%</td>
+</tr>
+<tr>
+<td>Arequipa</td>
+<td style="text-align: right;">331</td>
+<td style="text-align: right;">39.58%</td>
+</tr>
+<tr>
+<td>Trujillo</td>
+<td style="text-align: right;">328</td>
+<td style="text-align: right;">39.94%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tasa de falla por turno</strong></p>
+<table>
+<thead>
+<tr>
+<th>Turno</th>
+<th style="text-align: right;">Registros</th>
+<th style="text-align: right;">Tasa de falla</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mañana</td>
+<td style="text-align: right;">345</td>
+<td style="text-align: right;">32.46%</td>
+</tr>
+<tr>
+<td>Noche</td>
+<td style="text-align: right;">319</td>
+<td style="text-align: right;">40.44%</td>
+</tr>
+<tr>
+<td>Tarde</td>
+<td style="text-align: right;">336</td>
+<td style="text-align: right;">42.86%</td>
+</tr>
+</tbody>
+</table>
+<p>El turno <strong>tarde</strong> exhibe la mayor criticidad, con una tasa <strong>10.40 puntos porcentuales</strong> superior a la del turno mañana. Esto constituye un insight de negocio relevante, ya que permite focalizar supervisión, pausas técnicas, inspecciones cortas y dotación de soporte en franjas de mayor exposición.</p>
+<h3 id="53-analisis-por-tipo-de-maquina">5.3 Análisis por Tipo de Máquina</h3>
+<p>Las tasas de falla por tipo de máquina son relativamente cercanas entre sí, lo que sugiere que el riesgo no está concentrado exclusivamente en una sola familia tecnológica, sino en la combinación entre condición operativa y mantenimiento.</p>
+<table>
+<thead>
+<tr>
+<th>Tipo de máquina</th>
+<th style="text-align: right;">Registros</th>
+<th style="text-align: right;">Tasa de falla</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Inyectora</td>
+<td style="text-align: right;">199</td>
+<td style="text-align: right;">39.70%</td>
+</tr>
+<tr>
+<td>Prensa</td>
+<td style="text-align: right;">210</td>
+<td style="text-align: right;">39.05%</td>
+</tr>
+<tr>
+<td>Empacadora</td>
+<td style="text-align: right;">215</td>
+<td style="text-align: right;">38.14%</td>
+</tr>
+<tr>
+<td>Compresor</td>
+<td style="text-align: right;">164</td>
+<td style="text-align: right;">37.80%</td>
+</tr>
+<tr>
+<td>Torno CNC</td>
+<td style="text-align: right;">212</td>
+<td style="text-align: right;">37.74%</td>
+</tr>
+</tbody>
+</table>
+<p>Aunque las diferencias son reducidas, las <strong>inyectoras</strong> presentan la tasa más alta. Además, en el conjunto de alto riesgo, las <strong>empacadoras</strong> concentran <strong>63 registros</strong>, equivalentes al <strong>26.0%</strong> del total priorizado.</p>
+<h3 id="54-correlaciones-clave">5.4 Correlaciones Clave</h3>
+<p>El análisis de correlación con la variable <code>falla_maquina</code> muestra que las asociaciones más importantes son:</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th style="text-align: right;">Correlación con falla</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>temperatura_c</td>
+<td style="text-align: right;">0.303</td>
+</tr>
+<tr>
+<td>vibracion_mm_s</td>
+<td style="text-align: right;">0.298</td>
+</tr>
+<tr>
+<td>dias_desde_mantenimiento</td>
+<td style="text-align: right;">0.271</td>
+</tr>
+<tr>
+<td>consumo_energia_kwh</td>
+<td style="text-align: right;">0.140</td>
+</tr>
+<tr>
+<td>presion_bar</td>
+<td style="text-align: right;">0.103</td>
+</tr>
+<tr>
+<td>tasa_defectos_pct</td>
+<td style="text-align: right;">0.101</td>
+</tr>
+<tr>
+<td>antiguedad_anios</td>
+<td style="text-align: right;">0.057</td>
+</tr>
+<tr>
+<td>horas_operacion</td>
+<td style="text-align: right;">0.016</td>
+</tr>
+<tr>
+<td>produccion_unidades</td>
+<td style="text-align: right;">0.006</td>
+</tr>
+</tbody>
+</table>
+<p>Estas correlaciones permiten extraer una lectura importante: el riesgo de falla se asocia más con <strong>señales de condición operativa</strong> y <strong>tiempo sin mantenimiento</strong> que con la producción misma.</p>
+<h3 id="55-insights-preliminares">5.5 Insights Preliminares</h3>
+<p>Los principales hallazgos exploratorios son los siguientes:</p>
+<ol>
+<li>La falla de maquinaria es un problema estructural, no marginal: <strong>38.5%</strong> de incidencia.</li>
+<li>El riesgo aumenta fuera del turno mañana; tarde y noche concentran mayor exposición.</li>
+<li>Temperatura, vibración y días desde mantenimiento son las señales más informativas.</li>
+<li>Las diferencias entre plantas existen, pero no son extremas; el problema es transversal.</li>
+<li>La producción casi no se correlaciona con la falla (<strong>0.006</strong>), señal de que ambas dimensiones deben gestionarse con métricas distintas.</li>
+</ol>
+<h2 id="6-modelado-y-resultados">6. MODELADO Y RESULTADOS</h2>
+<h3 id="61-modelo-1-regresion-logistica">6.1 Modelo 1: Regresión Logística</h3>
+<p>La regresión logística fue el modelo de mejor rendimiento global para la predicción de falla. Sus resultados fueron:</p>
+<table>
+<thead>
+<tr>
+<th>Métrica</th>
+<th style="text-align: right;">Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accuracy</td>
+<td style="text-align: right;">69.5%</td>
+</tr>
+<tr>
+<td>Precision</td>
+<td style="text-align: right;">59.3%</td>
+</tr>
+<tr>
+<td>Recall</td>
+<td style="text-align: right;">66.2%</td>
+</tr>
+<tr>
+<td>F1-Score</td>
+<td style="text-align: right;">62.6%</td>
+</tr>
+<tr>
+<td>AUC-ROC</td>
+<td style="text-align: right;">0.761</td>
+</tr>
+<tr>
+<td>CV-5 Accuracy</td>
+<td style="text-align: right;">73.0%</td>
+</tr>
+</tbody>
+</table>
+<p>La lectura gerencial de estas métricas es positiva. Un <strong>AUC-ROC de 0.761</strong> indica capacidad de discriminación razonable, superior al azar y útil para priorización. El <strong>recall de 66.2%</strong> implica que el modelo identifica alrededor de dos tercios de las fallas reales, lo cual es valioso en un esquema preventivo.</p>
+<p>Los coeficientes más influyentes fueron:</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th style="text-align: right;">Efecto relativo en el riesgo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dias_desde_mantenimiento</td>
+<td style="text-align: right;">0.763</td>
+</tr>
+<tr>
+<td>vibracion_mm_s</td>
+<td style="text-align: right;">0.724</td>
+</tr>
+<tr>
+<td>temperatura_c</td>
+<td style="text-align: right;">0.716</td>
+</tr>
+<tr>
+<td>antiguedad_anios</td>
+<td style="text-align: right;">0.326</td>
+</tr>
+<tr>
+<td>presion_bar</td>
+<td style="text-align: right;">0.277</td>
+</tr>
+</tbody>
+</table>
+<p>En términos prácticos, a mayor tiempo sin mantenimiento, mayor vibración y mayor temperatura, mayor probabilidad de falla estimada.</p>
+<h3 id="62-modelo-2-clustering-k-means">6.2 Modelo 2: Clustering K-Means</h3>
+<p>El modelo K-Means se implementó con <strong>k = 4</strong> por interpretabilidad gerencial, obteniéndose un <strong>Silhouette score de 0.082</strong>. Aunque este valor sugiere separación moderada-baja entre clusters, la segmentación resultó útil para diferenciar perfiles de operación y riesgo.</p>
+<table>
+<thead>
+<tr>
+<th>Segmento</th>
+<th style="text-align: right;">Registros</th>
+<th style="text-align: right;">Falla promedio</th>
+<th>Rasgos dominantes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Eficientes</td>
+<td style="text-align: right;">280</td>
+<td style="text-align: right;">22.9%</td>
+<td>Menor vibración, menor temperatura, consumo controlado</td>
+</tr>
+<tr>
+<td>Estándar</td>
+<td style="text-align: right;">275</td>
+<td style="text-align: right;">32.0%</td>
+<td>Desempeño intermedio, mayor antigüedad y mantenimiento postergado</td>
+</tr>
+<tr>
+<td>Alerta</td>
+<td style="text-align: right;">219</td>
+<td style="text-align: right;">47.0%</td>
+<td>Temperatura y vibración elevadas</td>
+</tr>
+<tr>
+<td>Críticas</td>
+<td style="text-align: right;">226</td>
+<td style="text-align: right;">57.5%</td>
+<td>Máxima temperatura, vibración y consumo energético</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Perfiles promedio por cluster</strong></p>
+<table>
+<thead>
+<tr>
+<th>Segmento</th>
+<th style="text-align: right;">Temperatura °C</th>
+<th style="text-align: right;">Vibración mm/s</th>
+<th style="text-align: right;">Días sin mantenimiento</th>
+<th style="text-align: right;">Antigüedad (años)</th>
+<th style="text-align: right;">Defectos %</th>
+<th style="text-align: right;">Producción</th>
+<th style="text-align: right;">Energía kWh</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Eficientes</td>
+<td style="text-align: right;">68.84</td>
+<td style="text-align: right;">3.51</td>
+<td style="text-align: right;">110.08</td>
+<td style="text-align: right;">2.53</td>
+<td style="text-align: right;">2.60</td>
+<td style="text-align: right;">850.04</td>
+<td style="text-align: right;">510.99</td>
+</tr>
+<tr>
+<td>Estándar</td>
+<td style="text-align: right;">68.81</td>
+<td style="text-align: right;">3.58</td>
+<td style="text-align: right;">150.61</td>
+<td style="text-align: right;">6.13</td>
+<td style="text-align: right;">2.51</td>
+<td style="text-align: right;">840.52</td>
+<td style="text-align: right;">543.08</td>
+</tr>
+<tr>
+<td>Alerta</td>
+<td style="text-align: right;">78.71</td>
+<td style="text-align: right;">5.04</td>
+<td style="text-align: right;">88.74</td>
+<td style="text-align: right;">6.41</td>
+<td style="text-align: right;">3.46</td>
+<td style="text-align: right;">841.28</td>
+<td style="text-align: right;">637.28</td>
+</tr>
+<tr>
+<td>Críticas</td>
+<td style="text-align: right;">79.87</td>
+<td style="text-align: right;">5.26</td>
+<td style="text-align: right;">134.92</td>
+<td style="text-align: right;">2.71</td>
+<td style="text-align: right;">3.71</td>
+<td style="text-align: right;">851.92</td>
+<td style="text-align: right;">658.22</td>
+</tr>
+</tbody>
+</table>
+<p>Este resultado sugiere que el clustering no define solamente “máquinas buenas o malas”, sino configuraciones operativas con distintos mecanismos de exposición.</p>
+<h3 id="63-modelo-3-arbol-de-decision">6.3 Modelo 3: Árbol de Decisión</h3>
+<p>El árbol de decisión entregó un rendimiento menor en exactitud global, pero mayor facilidad de interpretación.</p>
+<table>
+<thead>
+<tr>
+<th>Métrica</th>
+<th style="text-align: right;">Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accuracy</td>
+<td style="text-align: right;">60.0%</td>
+</tr>
+<tr>
+<td>Recall</td>
+<td style="text-align: right;">70.1%</td>
+</tr>
+<tr>
+<td>AUC-ROC</td>
+<td style="text-align: right;">0.650</td>
+</tr>
+</tbody>
+</table>
+<p>Las variables más importantes fueron:</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th style="text-align: right;">Importancia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>vibracion_mm_s</td>
+<td style="text-align: right;">44.9%</td>
+</tr>
+<tr>
+<td>dias_desde_mantenimiento</td>
+<td style="text-align: right;">24.9%</td>
+</tr>
+<tr>
+<td>temperatura_c</td>
+<td style="text-align: right;">15.9%</td>
+</tr>
+<tr>
+<td>presion_bar</td>
+<td style="text-align: right;">9.2%</td>
+</tr>
+<tr>
+<td>horas_operacion</td>
+<td style="text-align: right;">2.8%</td>
+</tr>
+</tbody>
+</table>
+<p>Una de las principales reglas obtenidas puede resumirse así:</p>
+<ul>
+<li>si la <strong>vibración es mayor a 5.45 mm/s</strong> y los <strong>días desde mantenimiento superan 52.5</strong>, la probabilidad de clasificar como falla aumenta;</li>
+<li>si la <strong>vibración es menor o igual a 5.45 mm/s</strong>, pero los <strong>días sin mantenimiento superan 165.5</strong> y la temperatura es elevada, el riesgo también se incrementa.</li>
+</ul>
+<p>Estas reglas son particularmente útiles para protocolos de inspección y checklist de mantenimiento.</p>
+<h3 id="64-modelo-4-regresion-lineal-multiple">6.4 Modelo 4: Regresión Lineal Múltiple</h3>
+<p>El modelo de regresión lineal sobre <code>produccion_unidades</code> arrojó los siguientes resultados:</p>
+<table>
+<thead>
+<tr>
+<th>Métrica</th>
+<th style="text-align: right;">Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R²</td>
+<td style="text-align: right;">-0.009</td>
+</tr>
+<tr>
+<td>RMSE</td>
+<td style="text-align: right;">181 unidades</td>
+</tr>
+</tbody>
+</table>
+<p>El valor negativo de <strong>R²</strong> indica que el modelo lineal no logra explicar la producción mejor que una predicción basada simplemente en el promedio. Esto no significa que el análisis haya fallado; significa que la producción depende de factores adicionales no incorporados en el dataset.</p>
+<p>Entre esos factores plausibles se encuentran:</p>
+<ul>
+<li>habilidad y experiencia del operador;</li>
+<li>calidad y homogeneidad de la materia prima;</li>
+<li>mix de productos fabricados;</li>
+<li>tiempos de setup y cambio de lote;</li>
+<li>programación y secuenciación de órdenes;</li>
+<li>disponibilidad de insumos;</li>
+<li>microparadas no registradas;</li>
+<li>disciplina operativa y condiciones ambientales.</li>
+</ul>
+<p>Por tanto, el bajo R² es un hallazgo de negocio: <strong>la productividad no debe ser inferida solo a partir de señales de condición mecánica</strong>.</p>
+<h3 id="65-comparacion-de-tecnicas">6.5 Comparación de Técnicas</h3>
+<table>
+<thead>
+<tr>
+<th>Técnica</th>
+<th>Objetivo</th>
+<th>Fortaleza principal</th>
+<th>Limitación principal</th>
+<th>Uso recomendado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Regresión Logística</td>
+<td>Predecir falla</td>
+<td>Mejor balance global de métricas</td>
+<td>Interpretabilidad media</td>
+<td>Sistema principal de riesgo</td>
+</tr>
+<tr>
+<td>K-Means</td>
+<td>Segmentar máquinas</td>
+<td>Clasificación operativa gerencial</td>
+<td>Silhouette bajo</td>
+<td>Priorización táctica</td>
+</tr>
+<tr>
+<td>Árbol de Decisión</td>
+<td>Explicar falla</td>
+<td>Reglas claras y accionables</td>
+<td>Menor exactitud</td>
+<td>Protocolos y umbrales</td>
+</tr>
+<tr>
+<td>Regresión Lineal</td>
+<td>Explicar producción</td>
+<td>Evidencia sobre variables faltantes</td>
+<td>Muy bajo ajuste</td>
+<td>Rediseñar captura de datos</td>
+</tr>
+</tbody>
+</table>
+<p>En síntesis, la mejor arquitectura analítica no es escoger un solo modelo, sino combinar:</p>
+<ul>
+<li><strong>regresión logística</strong> para scoring predictivo;</li>
+<li><strong>árbol de decisión</strong> para reglas operativas;</li>
+<li><strong>clustering</strong> para segmentación de mantenimiento;</li>
+<li><strong>regresión lineal</strong> como diagnóstico de variables faltantes en productividad.</li>
+</ul>
+<h2 id="7-interpretacion-gerencial">7. INTERPRETACIÓN GERENCIAL</h2>
+<h3 id="71-traduccion-de-metricas-a-lenguaje-de-negocio">7.1 Traducción de Métricas a Lenguaje de Negocio</h3>
+<p>Para un tomador de decisiones, la interpretación de métricas debe centrarse en impacto operativo:</p>
+<ul>
+<li><strong>69.5% de accuracy</strong> significa que el modelo acierta aproximadamente 7 de cada 10 casos.</li>
+<li><strong>66.2% de recall</strong> implica detectar cerca de 66 de cada 100 fallas reales antes de que pasen inadvertidas.</li>
+<li><strong>AUC-ROC de 0.761</strong> refleja una capacidad consistente para diferenciar activos más riesgosos de activos más estables.</li>
+<li><strong>242 registros de alto riesgo</strong> constituyen una cartera inmediata de intervención.</li>
+</ul>
+<p>En otras palabras, el modelo no reemplaza al especialista de mantenimiento, pero sí le permite trabajar con una cola priorizada, reduciendo inspecciones ciegas.</p>
+<h3 id="72-maquinas-priorizadas-para-mantenimiento">7.2 Máquinas Priorizadas para Mantenimiento</h3>
+<p>El análisis identificó <strong>242 observaciones con probabilidad de falla superior a 70%</strong>, asociadas a <strong>137 máquinas únicas</strong>. La distribución de estos casos es transversal entre plantas, lo que confirma que el riesgo no se concentra en una sola sede:</p>
+<table>
+<thead>
+<tr>
+<th>Planta</th>
+<th style="text-align: right;">Registros de alto riesgo</th>
+<th style="text-align: right;">Participación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lima</td>
+<td style="text-align: right;">81</td>
+<td style="text-align: right;">33.5%</td>
+</tr>
+<tr>
+<td>Trujillo</td>
+<td style="text-align: right;">81</td>
+<td style="text-align: right;">33.5%</td>
+</tr>
+<tr>
+<td>Arequipa</td>
+<td style="text-align: right;">80</td>
+<td style="text-align: right;">33.1%</td>
+</tr>
+</tbody>
+</table>
+<p>Los casos de mayor riesgo muestran patrones repetidos: temperaturas superiores a 85 °C, vibraciones por encima de 6 mm/s y periodos extensos sin mantenimiento. Por tanto, la recomendación no es revisar aleatoriamente todas las máquinas, sino intervenir primero aquellas con acumulación simultánea de señales críticas.</p>
+<h3 id="73-segmentos-operativos-y-plan-de-accion">7.3 Segmentos Operativos y Plan de Acción</h3>
+<p>La segmentación permite diferenciar estrategias:</p>
+<table>
+<thead>
+<tr>
+<th>Segmento</th>
+<th>Riesgo</th>
+<th>Acción sugerida</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Eficientes</td>
+<td>Bajo</td>
+<td>Mantener frecuencia actual y monitoreo rutinario</td>
+</tr>
+<tr>
+<td>Estándar</td>
+<td>Medio-bajo</td>
+<td>Revisar antigüedad, limpieza y mantenimiento calendarizado</td>
+</tr>
+<tr>
+<td>Alerta</td>
+<td>Medio-alto</td>
+<td>Inspección preventiva priorizada en 7 días</td>
+</tr>
+<tr>
+<td>Críticas</td>
+<td>Alto</td>
+<td>Intervención inmediata y evaluación de parada programada</td>
+</tr>
+</tbody>
+</table>
+<p>Además, entre los registros de alto riesgo, el <strong>43.4%</strong> pertenece al segmento <strong>Críticas</strong> y el <strong>31.4%</strong> al segmento <strong>Alerta</strong>. Esto confirma la coherencia entre el clustering y el scoring predictivo.</p>
+<h3 id="74-factores-criticos-de-eficiencia">7.4 Factores Críticos de Eficiencia</h3>
+<p>Los factores que más afectan la estabilidad operativa son:</p>
+<ol>
+<li><strong>Vibración</strong>: variable más importante del árbol (<strong>44.9%</strong>).</li>
+<li><strong>Días desde mantenimiento</strong>: principal coeficiente logístico (<strong>0.763</strong>).</li>
+<li><strong>Temperatura</strong>: mayor correlación con falla (<strong>0.303</strong>).</li>
+<li><strong>Turno</strong>: el turno tarde eleva la exposición a falla.</li>
+<li><strong>Consumo energético</strong>: mayor en segmentos críticos (<strong>658.22 kWh</strong>) frente a eficientes (<strong>510.99 kWh</strong>).</li>
+</ol>
+<p>Cinco insights de negocio respaldados por números son, por tanto:</p>
+<ol>
+<li>La operación presenta una falla estructural de <strong>38.5%</strong>.</li>
+<li>El turno tarde alcanza <strong>42.86%</strong> de falla, superando claramente al turno mañana (<strong>32.46%</strong>).</li>
+<li>Los segmentos <strong>Alerta</strong> y <strong>Críticas</strong> concentran tasas de falla de <strong>47.0%</strong> y <strong>57.5%</strong>, respectivamente.</li>
+<li>La vibración explica <strong>44.9%</strong> de la importancia del árbol de decisión.</li>
+<li>Existen <strong>242 registros de alto riesgo</strong> que permiten actuar selectivamente en lugar de intervenir indiscriminadamente.</li>
+</ol>
+<h2 id="8-sistema-de-alertas-y-priorizacion">8. SISTEMA DE ALERTAS Y PRIORIZACIÓN</h2>
+<h3 id="81-umbrales-de-riesgo">8.1 Umbrales de Riesgo</h3>
+<p>Se propone un esquema de alertas basado en la probabilidad estimada por la regresión logística y reforzado con reglas del árbol de decisión.</p>
+<table>
+<thead>
+<tr>
+<th>Nivel</th>
+<th style="text-align: right;">Probabilidad de falla</th>
+<th>Condición operativa sugerida</th>
+<th>Prioridad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Verde</td>
+<td style="text-align: right;">&lt; 40%</td>
+<td>Operación estable</td>
+<td>Baja</td>
+</tr>
+<tr>
+<td>Amarillo</td>
+<td style="text-align: right;">40% a &lt; 70%</td>
+<td>Riesgo moderado</td>
+<td>Media</td>
+</tr>
+<tr>
+<td>Rojo</td>
+<td style="text-align: right;">≥ 70%</td>
+<td>Alto riesgo de falla</td>
+<td>Alta</td>
+</tr>
+</tbody>
+</table>
+<p>Umbrales complementarios recomendados:</p>
+<ul>
+<li><strong>vibración &gt; 5.45 mm/s</strong>;</li>
+<li><strong>días desde mantenimiento &gt; 165</strong>;</li>
+<li><strong>temperatura &gt; 79 °C</strong> en contextos de vibración elevada.</li>
+</ul>
+<h3 id="82-matriz-de-priorizacion">8.2 Matriz de Priorización</h3>
+<table>
+<thead>
+<tr>
+<th>Probabilidad / Condición</th>
+<th>Baja severidad</th>
+<th>Media severidad</th>
+<th>Alta severidad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&lt; 40%</td>
+<td>Monitoreo rutinario</td>
+<td>Monitoreo semanal</td>
+<td>Inspección preventiva</td>
+</tr>
+<tr>
+<td>40% a &lt; 70%</td>
+<td>Revisión programada</td>
+<td>Inspección en 72 horas</td>
+<td>Intervención en 24-48 horas</td>
+</tr>
+<tr>
+<td>≥ 70%</td>
+<td>Inspección inmediata</td>
+<td>Orden de trabajo urgente</td>
+<td>Posible parada programada</td>
+</tr>
+</tbody>
+</table>
+<p>La severidad debe considerar criticidad del equipo, impacto en seguridad, afectación sobre calidad y dependencia del proceso productivo.</p>
+<h3 id="83-reglas-de-accion-recomendadas">8.3 Reglas de Acción Recomendadas</h3>
+<ol>
+<li>Generar orden automática de inspección cuando la probabilidad de falla sea <strong>≥ 70%</strong>.</li>
+<li>Escalar a mantenimiento urgente si vibración <strong>&gt; 5.45 mm/s</strong> y temperatura <strong>&gt; 79 °C</strong>.</li>
+<li>Programar mantenimiento si los días sin intervención superan <strong>165 días</strong>, incluso con vibración moderada.</li>
+<li>Incrementar supervisión en turno tarde y noche por sus tasas de falla de <strong>42.86%</strong> y <strong>40.44%</strong>.</li>
+<li>Usar el segmento del cluster como criterio adicional: <strong>Críticas</strong> y <strong>Alerta</strong> primero.</li>
+<li>Registrar causa raíz posterior a cada intervención para retroalimentar el modelo.</li>
+</ol>
+<h2 id="9-conclusiones">9. CONCLUSIONES</h2>
+<ol>
+<li><strong>La tasa de falla de 38.5% confirma un problema operativo de alta prioridad</strong>, ya que 385 de 1,000 registros evidencian fallas de maquinaria, nivel incompatible con una estrategia predominantemente correctiva.</li>
+<li><strong>La regresión logística fue la técnica supervisada más efectiva</strong>, con Accuracy de 69.5%, Recall de 66.2% y AUC-ROC de 0.761, lo que la convierte en la mejor base para un sistema de alertas predictivas.</li>
+<li><strong>La vibración, la temperatura y los días desde mantenimiento son los principales impulsores del riesgo</strong>, sustentado por correlaciones de 0.298, 0.303 y 0.271, respectivamente, y por la importancia del árbol de decisión, donde la vibración explica 44.9%.</li>
+<li><strong>El turno influye materialmente en la exposición al fallo</strong>, puesto que la tasa de falla sube de 32.46% en la mañana a 42.86% en la tarde, diferencia de 10.40 puntos porcentuales que debe ser gestionada operativamente.</li>
+<li><strong>La segmentación K-Means permitió construir una tipología útil de mantenimiento</strong>, diferenciando grupos Eficientes (22.9% de falla), Estándar (32.0%), Alerta (47.0%) y Críticas (57.5%), aun cuando el índice Silhouette fue bajo (0.082).</li>
+<li><strong>La identificación de 242 registros de alto riesgo, asociados a 137 máquinas únicas, constituye el principal entregable táctico del proyecto</strong>, porque permite focalizar recursos de mantenimiento donde la probabilidad de falla supera 70%.</li>
+<li><strong>La producción no se explica linealmente con las variables observadas</strong>, como evidencia el R² de -0.009, por lo que la empresa debe ampliar su captura de datos hacia factores humanos, logísticos y de proceso si desea modelar productividad con mayor rigor.</li>
+</ol>
+<h2 id="10-recomendaciones-estrategicas">10. RECOMENDACIONES ESTRATÉGICAS</h2>
+<h3 id="101-acciones-inmediatas-corto-plazo-0-a-3-meses">10.1 Acciones Inmediatas (Corto Plazo — 0 a 3 meses)</h3>
+<ol>
+<li><strong>Intervenir de forma prioritaria los 242 registros de alto riesgo</strong>, comenzando por los casos del segmento <strong>Críticas</strong>.</li>
+<li><strong>Implementar un tablero de alertas en Streamlit</strong> con semáforos por nivel de riesgo, planta, turno y tipo de máquina.</li>
+<li><strong>Revisar inmediatamente equipos con vibración superior a 5.45 mm/s</strong>, aunque no hayan fallado aún.</li>
+<li><strong>Programar mantenimiento correctivo-preventivo para equipos con más de 165 días sin intervención</strong>.</li>
+<li><strong>Reforzar supervisión en turno tarde</strong>, incorporando checklists rápidos de temperatura, vibración y presión al inicio y mitad del turno.</li>
+</ol>
+<h3 id="102-acciones-tacticas-mediano-plazo-3-a-12-meses">10.2 Acciones Tácticas (Mediano Plazo — 3 a 12 meses)</h3>
+<ol>
+<li><strong>Rediseñar la política de mantenimiento preventivo</strong> usando probabilidad de falla y no solo calendario fijo.</li>
+<li><strong>Crear indicadores semanales por planta y turno</strong>: tasa de falla, promedio de vibración, días desde mantenimiento y porcentaje de activos en rojo.</li>
+<li><strong>Capacitar a supervisores y técnicos en lectura de alertas analíticas</strong>, para reducir la brecha entre resultado del modelo y acción en planta.</li>
+<li><strong>Registrar causa raíz, repuestos usados y tiempo de parada por intervención</strong>, enriqueciendo futuros modelos de confiabilidad.</li>
+<li><strong>Revisar específicamente empacadoras e inyectoras</strong>, por su peso relativo en los casos priorizados y sus tasas de falla cercanas o superiores al promedio global.</li>
+</ol>
+<h3 id="103-acciones-estrategicas-largo-plazo-1-a-3-anos">10.3 Acciones Estratégicas (Largo Plazo — 1 a 3 años)</h3>
+<ol>
+<li><strong>Evolucionar hacia mantenimiento predictivo con series temporales e IoT</strong>, capturando señales continuas de sensores y eventos.</li>
+<li><strong>Ampliar el modelo de producción</strong> incorporando variables de operador, calidad de materia prima, mix de producto, setups, disponibilidad de insumos y microparadas.</li>
+<li><strong>Integrar analítica predictiva con el sistema de gestión de mantenimiento (CMMS/ERP)</strong> para que las alertas generen automáticamente órdenes de trabajo y trazabilidad económica.</li>
+</ol>
+<h2 id="11-referencias">11. REFERENCIAS</h2>
+<ol>
+<li>Chapman, P., Clinton, J., Kerber, R., Khabaza, T., Reinartz, T., Shearer, C., &amp; Wirth, R. (2000). <em>CRISP-DM 1.0: Step-by-step data mining guide</em>. SPSS.</li>
+<li>Hosmer, D. W., Lemeshow, S., &amp; Sturdivant, R. X. (2013). <em>Applied Logistic Regression</em> (3rd ed.). Wiley.</li>
+<li>James, G., Witten, D., Hastie, T., &amp; Tibshirani, R. (2021). <em>An Introduction to Statistical Learning</em> (2nd ed.). Springer.</li>
+<li>Han, J., Kamber, M., &amp; Pei, J. (2012). <em>Data Mining: Concepts and Techniques</em> (3rd ed.). Morgan Kaufmann.</li>
+<li>Montgomery, D. C. (2019). <em>Introduction to Statistical Quality Control</em> (8th ed.). Wiley.</li>
+<li>Géron, A. (2022). <em>Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow</em> (3rd ed.). O’Reilly.</li>
+<li>ISO 55000. (2014). <em>Asset management — Overview, principles and terminology</em>. International Organization for Standardization.</li>
+</ol>
+<h2 id="anexos">ANEXOS</h2>
+<h3 id="anexo-a-codigo-python-resumen">Anexo A: Código Python Resumen</h3>
+<pre><code class="language-python">import pandas as pd
+from sklearn.model_selection import train_test_split, cross_val_score
+from sklearn.preprocessing import LabelEncoder, StandardScaler
+from sklearn.linear_model import LogisticRegression, LinearRegression
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.cluster import KMeans
+from sklearn.metrics import accuracy_score, recall_score, f1_score, roc_auc_score
+
+df = pd.read_csv(&quot;data/manufactura/dataset_manufactura_1000.csv&quot;)
+
+for col in [&quot;planta&quot;, &quot;tipo_maquina&quot;, &quot;turno&quot;]:
+    df[f&quot;{col}_cod&quot;] = LabelEncoder().fit_transform(df[col])
+
+vars_modelo = [
+    &quot;temperatura_c&quot;, &quot;vibracion_mm_s&quot;, &quot;presion_bar&quot;, &quot;horas_operacion&quot;,
+    &quot;antiguedad_anios&quot;, &quot;dias_desde_mantenimiento&quot;, &quot;tasa_defectos_pct&quot;,
+    &quot;consumo_energia_kwh&quot;, &quot;planta_cod&quot;, &quot;tipo_maquina_cod&quot;, &quot;turno_cod&quot;
+]
+
+X = df[vars_modelo]
+y = df[&quot;falla_maquina&quot;]
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42, stratify=y
+)
+
+scaler = StandardScaler()
+X_train_sc = scaler.fit_transform(X_train)
+X_test_sc = scaler.transform(X_test)
+
+modelo_log = LogisticRegression(max_iter=1000)
+modelo_log.fit(X_train_sc, y_train)
+y_prob = modelo_log.predict_proba(X_test_sc)[:, 1]
+y_pred = modelo_log.predict(X_test_sc)
+
+modelo_tree = DecisionTreeClassifier(max_depth=5, class_weight=&quot;balanced&quot;, random_state=42)
+modelo_tree.fit(X_train, y_train)
+
+kmeans = KMeans(n_clusters=4, random_state=42, n_init=10)
+clusters = kmeans.fit_predict(StandardScaler().fit_transform(X))
+
+modelo_reg = LinearRegression()
+modelo_reg.fit(
+    df[[&quot;temperatura_c&quot;, &quot;vibracion_mm_s&quot;, &quot;presion_bar&quot;, &quot;horas_operacion&quot;,
+        &quot;consumo_energia_kwh&quot;, &quot;dias_desde_mantenimiento&quot;, &quot;tasa_defectos_pct&quot;]],
+    df[&quot;produccion_unidades&quot;]
+)
+</code></pre>
+<h3 id="anexo-b-glosario-de-terminos">Anexo B: Glosario de Términos</h3>
+<table>
+<thead>
+<tr>
+<th>Término</th>
+<th>Definición</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accuracy</td>
+<td>Proporción total de predicciones correctas del modelo.</td>
+</tr>
+<tr>
+<td>Precision</td>
+<td>Porcentaje de alertas positivas que realmente corresponden a fallas.</td>
+</tr>
+<tr>
+<td>Recall</td>
+<td>Porcentaje de fallas reales correctamente detectadas.</td>
+</tr>
+<tr>
+<td>F1-Score</td>
+<td>Media armónica entre precision y recall.</td>
+</tr>
+<tr>
+<td>AUC-ROC</td>
+<td>Medida de capacidad discriminatoria del clasificador.</td>
+</tr>
+<tr>
+<td>Clustering</td>
+<td>Técnica de segmentación no supervisada para agrupar observaciones similares.</td>
+</tr>
+<tr>
+<td>Silhouette Score</td>
+<td>Indicador de separación y cohesión de clusters.</td>
+</tr>
+<tr>
+<td>Feature Importance</td>
+<td>Peso relativo de una variable dentro de un modelo como árbol de decisión.</td>
+</tr>
+<tr>
+<td>Mantenimiento predictivo</td>
+<td>Enfoque que anticipa fallas con base en datos y señales operativas.</td>
+</tr>
+<tr>
+<td>Mantenimiento preventivo</td>
+<td>Intervención programada antes de la ocurrencia de una falla.</td>
+</tr>
+<tr>
+<td>RMSE</td>
+<td>Error cuadrático medio; mide la magnitud del error en una regresión.</td>
+</tr>
+<tr>
+<td>R²</td>
+<td>Porcentaje de variabilidad explicada por un modelo de regresión.</td>
+</tr>
+<tr>
+<td>CRISP-DM</td>
+<td>Metodología estándar para proyectos de minería de datos y analítica.</td>
+</tr>
+<tr>
+<td>Variable objetivo</td>
+<td>Resultado que se desea explicar o predecir mediante un modelo.</td>
+</tr>
+<tr>
+<td>Umbral de riesgo</td>
+<td>Punto de corte usado para activar una alerta o intervención.</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

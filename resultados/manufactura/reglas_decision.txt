@@ -1,0 +1,61 @@
+REGLAS DEL ÁRBOL DE DECISIÓN — MANUFACTURA UTP
+============================================================
+
+|--- vibracion_mm_s <= 5.45
+|   |--- dias_desde_mantenimiento <= 165.50
+|   |   |--- temperatura_c <= 68.85
+|   |   |   |--- antiguedad_anios <= 7.05
+|   |   |   |   |--- temperatura_c <= 62.25
+|   |   |   |   |   |--- class: 0
+|   |   |   |   |--- temperatura_c >  62.25
+|   |   |   |   |   |--- class: 0
+|   |   |   |--- antiguedad_anios >  7.05
+|   |   |   |   |--- class: 0
+|   |   |--- temperatura_c >  68.85
+|   |   |   |--- presion_bar <= 6.59
+|   |   |   |   |--- vibracion_mm_s <= 4.96
+|   |   |   |   |   |--- class: 0
+|   |   |   |   |--- vibracion_mm_s >  4.96
+|   |   |   |   |   |--- class: 0
+|   |   |   |--- presion_bar >  6.59
+|   |   |   |   |--- vibracion_mm_s <= 3.31
+|   |   |   |   |   |--- class: 0
+|   |   |   |   |--- vibracion_mm_s >  3.31
+|   |   |   |   |   |--- class: 1
+|   |--- dias_desde_mantenimiento >  165.50
+|   |   |--- vibracion_mm_s <= 1.48
+|   |   |   |--- class: 0
+|   |   |--- vibracion_mm_s >  1.48
+|   |   |   |--- presion_bar <= 5.39
+|   |   |   |   |--- vibracion_mm_s <= 3.59
+|   |   |   |   |   |--- class: 0
+|   |   |   |   |--- vibracion_mm_s >  3.59
+|   |   |   |   |   |--- class: 1
+|   |   |   |--- presion_bar >  5.39
+|   |   |   |   |--- temperatura_c <= 77.70
+|   |   |   |   |   |--- class: 1
+|   |   |   |   |--- temperatura_c >  77.70
+|   |   |   |   |   |--- class: 1
+|--- vibracion_mm_s >  5.45
+|   |--- dias_desde_mantenimiento <= 52.50
+|   |   |--- temperatura_c <= 79.30
+|   |   |   |--- class: 0
+|   |   |--- temperatura_c >  79.30
+|   |   |   |--- class: 1
+|   |--- dias_desde_mantenimiento >  52.50
+|   |   |--- vibracion_mm_s <= 6.66
+|   |   |   |--- vibracion_mm_s <= 5.90
+|   |   |   |   |--- dias_desde_mantenimiento <= 128.50
+|   |   |   |   |   |--- class: 1
+|   |   |   |   |--- dias_desde_mantenimiento >  128.50
+|   |   |   |   |   |--- class: 1
+|   |   |   |--- vibracion_mm_s >  5.90
+|   |   |   |   |--- horas_operacion <= 8073.00
+|   |   |   |   |   |--- class: 1
+|   |   |   |   |--- horas_operacion >  8073.00
+|   |   |   |   |   |--- class: 0
+|   |   |--- vibracion_mm_s >  6.66
+|   |   |   |--- tasa_defectos_pct <= 3.80
+|   |   |   |   |--- class: 1
+|   |   |   |--- tasa_defectos_pct >  3.80
+|   |   |   |   |--- class: 1
