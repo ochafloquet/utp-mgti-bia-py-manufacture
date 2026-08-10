@@ -7,39 +7,50 @@
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Open+Sans:wght@400;600&display=swap');
 
+    /* ── A4 PAGE SETUP ───────────────────────────────────────── */
+    @page {
+        size: A4;
+        margin: 2cm 2.5cm;
+    }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
         font-family: 'Open Sans', Arial, sans-serif;
-        font-size: 11pt;
+        font-size: 10.5pt;
         line-height: 1.7;
         color: #2c3e50;
         background: #fff;
-        max-width: 900px;
+        max-width: 21cm;
         margin: 0 auto;
         padding: 2cm 2.5cm;
     }
     h1 {
         font-family: 'Merriweather', serif;
-        font-size: 20pt;
+        font-size: 17pt;
         color: #1a252f;
         border-bottom: 3px solid #2980b9;
         padding-bottom: 10px;
         margin: 30px 0 20px;
         page-break-before: always;
+        break-before: page;
     }
-    h1:first-of-type { page-break-before: avoid; }
+    h1:first-of-type { page-break-before: avoid; break-before: avoid; }
     h2 {
-        font-size: 15pt;
+        font-size: 13pt;
         color: #2980b9;
         margin: 25px 0 12px;
         border-left: 4px solid #2980b9;
         padding-left: 10px;
+        page-break-after: avoid;
+        break-after: avoid;
     }
     h3 {
-        font-size: 12pt;
+        font-size: 11pt;
         color: #34495e;
-        margin: 20px 0 8px;
+        margin: 18px 0 8px;
         font-weight: 600;
+        page-break-after: avoid;
+        break-after: avoid;
     }
     p { margin: 0 0 10px; text-align: justify; }
     ul, ol { margin: 8px 0 12px 25px; }
@@ -47,18 +58,20 @@
     table {
         width: 100%;
         border-collapse: collapse;
-        margin: 15px 0 20px;
-        font-size: 10pt;
+        margin: 12px 0 18px;
+        font-size: 9.5pt;
+        page-break-inside: avoid;
+        break-inside: avoid;
     }
     th {
         background: #2980b9;
         color: white;
-        padding: 8px 10px;
+        padding: 7px 9px;
         text-align: left;
         font-weight: 600;
     }
     td {
-        padding: 7px 10px;
+        padding: 6px 9px;
         border-bottom: 1px solid #ecf0f1;
     }
     tr:nth-child(even) td { background: #f8f9fa; }
@@ -76,6 +89,8 @@
         border-radius: 6px;
         overflow-x: auto;
         margin: 15px 0;
+        page-break-inside: avoid;
+        break-inside: avoid;
     }
     pre code { background: none; color: inherit; padding: 0; }
     blockquote {
@@ -86,37 +101,233 @@
         border-radius: 0 4px 4px 0;
     }
     strong { color: #1a252f; }
+    .repo-link {
+        background: #f0f7ff;
+        border: 1px solid #2980b9;
+        border-left: 4px solid #1a3a6b;
+        border-radius: 4px;
+        padding: 14px 18px;
+        margin: 12px 0 20px;
+        font-size: 10pt;
+    }
+    .repo-link a {
+        color: #1a3a6b;
+        font-weight: 600;
+        word-break: break-all;
+    }
+    /* ── PORTADA ─────────────────────────────────────────────── */
     .portada {
         text-align: center;
-        padding: 60px 0;
-        border-bottom: 2px solid #2980b9;
+        page-break-after: always;
+        break-after: page;
+        padding: 0;
+        margin-bottom: 0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+    .portada-borde-top {
+        height: 8px;
+        background: linear-gradient(90deg, #1a3a6b 60%, #c0392b 100%);
         margin-bottom: 40px;
     }
+    .portada-logo-box {
+        display: inline-block;
+        border: 1.5px solid #ccc;
+        padding: 14px 22px;
+        margin-bottom: 28px;
+        background: #fff;
+    }
+    .portada-logo-utp {
+        font-family: 'Merriweather', serif;
+        font-size: 22pt;
+        font-weight: 900;
+        letter-spacing: 4px;
+        color: #fff;
+        background: #c0392b;
+        padding: 6px 20px;
+        display: inline-block;
+    }
+    .portada-universidad {
+        font-family: 'Merriweather', serif;
+        font-size: 13pt;
+        font-weight: 700;
+        color: #1a3a6b;
+        letter-spacing: 1px;
+        margin-bottom: 4px;
+    }
+    .portada-linea-u {
+        border: none;
+        border-top: 1.5px solid #1a3a6b;
+        width: 70%;
+        margin: 6px auto 10px;
+    }
+    .portada-postgrado {
+        font-size: 11pt;
+        color: #2980b9;
+        font-weight: 600;
+        margin-bottom: 26px;
+    }
+    .portada-proyecto {
+        font-size: 10pt;
+        color: #fff;
+        background: #1a3a6b;
+        display: inline-block;
+        padding: 5px 22px;
+        border-radius: 3px;
+        letter-spacing: 1px;
+        margin-bottom: 18px;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+    .portada-tipo {
+        font-family: 'Merriweather', serif;
+        font-size: 18pt;
+        font-weight: 700;
+        color: #1a3a6b;
+        margin-bottom: 14px;
+    }
+    .portada-linea-t {
+        border: none;
+        border-top: 2px solid #1a3a6b;
+        width: 92%;
+        margin: 14px auto;
+    }
+    .portada-titulo {
+        font-family: 'Merriweather', serif;
+        font-size: 18pt;
+        font-weight: 900;
+        color: #b22222;
+        text-decoration: underline;
+        text-decoration-color: #b22222;
+        text-underline-offset: 4px;
+        margin: 16px auto;
+        line-height: 1.35;
+        letter-spacing: 0.5px;
+        padding: 0 30px;
+    }
+    .portada-subtitulo {
+        font-size: 11pt;
+        color: #2471a3;
+        text-decoration: underline;
+        text-decoration-color: #2471a3;
+        text-underline-offset: 3px;
+        font-weight: 400;
+        margin: 18px auto 24px;
+        line-height: 1.6;
+        padding: 0 40px;
+    }
+    .portada-linea-b {
+        border: none;
+        border-top: 2px solid #1a3a6b;
+        width: 92%;
+        margin: 0 auto 28px;
+    }
+    .portada-datos {
+        text-align: left;
+        display: inline-block;
+        font-size: 10pt;
+        line-height: 2;
+        color: #2c3e50;
+    }
+    .portada-datos strong { color: #1a3a6b; }
+    .portada-borde-bot {
+        height: 8px;
+        background: linear-gradient(90deg, #1a3a6b 60%, #c0392b 100%);
+        margin-top: 40px;
+    }
+
+    /* ── FIGURAS Y GRÁFICOS ───────────────────────────────────── */
+    figure {
+        margin: 25px auto;
+        text-align: center;
+        max-width: 85%;
+        background: #fdfdfd;
+        border: 1px solid #e2e8f0;
+        padding: 15px;
+        border-radius: 6px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+    figure img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 4px;
+        display: block;
+        margin: 0 auto 10px;
+    }
+    figcaption {
+        font-size: 9.5pt;
+        color: #555;
+        font-style: italic;
+        margin-top: 8px;
+        border-top: 1px solid #edf2f7;
+        padding-top: 6px;
+    }
+    .grafico-resumen {
+        font-size: 10pt;
+        color: #333;
+        background-color: #f8fafc;
+        border-left: 3px solid #2980b9;
+        padding: 8px 12px;
+        margin: 10px 0 20px 0;
+        text-align: justify;
+    }
+
     @media print {
-        body { padding: 1cm 1.5cm; }
-        h1 { page-break-before: always; }
-        h1:first-of-type { page-break-before: avoid; }
-        table { page-break-inside: avoid; }
+        @page { size: A4; margin: 2cm 2.5cm; }
+        body { padding: 0; max-width: 100%; }
+        h1 { page-break-before: always; break-before: page; }
+        h1:first-of-type { page-break-before: avoid; break-before: avoid; }
+        h2 { page-break-after: avoid; break-after: avoid; }
+        h3 { page-break-after: avoid; break-after: avoid; }
+        table { page-break-inside: avoid; break-inside: avoid; }
+        figure { page-break-inside: avoid; break-inside: avoid; }
+        .grafico-resumen { page-break-inside: avoid; break-inside: avoid; }
+        .portada { page-break-after: always; break-after: page; }
+        pre { white-space: pre-wrap; word-break: break-word; }
     }
     </style>
 </head>
 <body>
-<h1 id="informe-ejecutivo-optimizacion-de-operaciones-industriales-mediante-analitica-predictiva-multi-tecnica">INFORME EJECUTIVO: OPTIMIZACIÓN DE OPERACIONES INDUSTRIALES MEDIANTE ANALÍTICA PREDICTIVA MULTI-TÉCNICA</h1>
-<h2 id="portada">PORTADA</h2>
-<p><strong>Universidad Tecnológica del Perú</strong><br />
-<strong>Maestría en Gerencia de TI y Transformación Digital</strong><br />
-<strong>Curso:</strong> Business Intelligence &amp; Analytics — Sesión 60271<br />
-<strong>Proyecto Final:</strong> Optimización de operaciones industriales mediante analítica predictiva multi-técnica<br />
-<strong>Sector de aplicación:</strong> Manufactura industrial en Lima, Arequipa y Trujillo, Perú<br />
-<strong>Integrantes:</strong><br />
-- [Nombre del Integrante 1]<br />
-- [Nombre del Integrante 2]<br />
-- [Nombre del Integrante 3]<br />
-- [Nombre del Integrante 4]<br />
-<strong>Docente:</strong> [Nombre del Docente]<br />
-<strong>Fecha:</strong> Agosto 2025<br />
-<strong>Lugar:</strong> Lima, Perú</p>
-<hr />
+
+<!-- ═══════════════════════════ PORTADA ═══════════════════════════ -->
+<div class="portada">
+    <div class="portada-borde-top"></div>
+
+    <div class="portada-logo-box">
+        <span class="portada-logo-utp">U&nbsp;T&nbsp;P</span>
+    </div>
+
+    <div class="portada-universidad">UNIVERSIDAD TECNOLÓGICA DEL PERÚ</div>
+    <hr class="portada-linea-u">
+    <div class="portada-postgrado">Escuela de Postgrado</div>
+    <div class="portada-postgrado" style="font-size:10pt; color:#34495e; font-weight:400; margin-top:-18px; margin-bottom:22px;">
+        Maestría en Gerencia de TI y Transformación Digital
+    </div>
+
+    <div class="portada-proyecto">Proyecto Final Grupal</div>
+
+    <div class="portada-tipo">INFORME ACADÉMICO</div>
+    <hr class="portada-linea-t">
+
+    <div class="portada-titulo">OPTIMIZACIÓN DE OPERACIONES INDUSTRIALES MEDIANTE ANALÍTICA PREDICTIVA MULTI-TÉCNICA</div>
+    <hr class="portada-linea-t">
+
+    <hr class="portada-linea-b">
+
+    <div class="portada-datos">
+        <strong>Curso:</strong> Business Intelligence &amp; Analytics<br>
+        <strong>Programa:</strong> Maestría en Gerencia de TI y Transformación Digital<br>
+        <strong>Fecha:</strong> 22 de julio de 2026<br>
+        <strong>Integrantes:</strong> Joel Tunque, Jimmy Quispe, Deyvis Ortiz, Oscar Chafloque, Gerardo Gavidia
+    </div>
+
+    <div class="portada-borde-bot"></div>
+</div>
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<h1 id="informe-ejecutivo">INFORME EJECUTIVO: OPTIMIZACIÓN DE OPERACIONES INDUSTRIALES MEDIANTE ANALÍTICA PREDICTIVA MULTI-TÉCNICA</h1>
 <h2 id="resumen-ejecutivo">RESUMEN EJECUTIVO</h2>
 <p>El presente informe desarrolla un proyecto académico de Business Intelligence &amp; Analytics orientado al sector manufacturero industrial peruano, con cobertura en plantas ubicadas en Lima, Arequipa y Trujillo. El problema central analizado es una tasa de falla de maquinaria de <strong>38.5%</strong>, equivalente a 385 eventos de falla sobre un total de 1,000 registros operacionales capturados en <strong>180 máquinas</strong>. Esta magnitud de incidencia implica un nivel significativo de paradas no planificadas, afectación de la continuidad productiva, incremento de costos de mantenimiento correctivo y presión sobre la calidad operativa.</p>
 <p>Con el propósito de transformar datos operativos en decisiones accionables, se aplicó la metodología <strong>CRISP-DM</strong>, estructurando el trabajo en seis fases: entendimiento del negocio, entendimiento de los datos, preparación de datos, modelado, evaluación y despliegue analítico. Sobre esta base metodológica, se implementaron cuatro técnicas complementarias en Python usando <strong>pandas, scikit-learn, seaborn, matplotlib y streamlit</strong>: <strong>regresión logística binaria</strong> para predecir fallas, <strong>clustering K-Means</strong> para segmentar perfiles operativos, <strong>árbol de decisión</strong> para generar reglas interpretables y <strong>regresión lineal múltiple</strong> para explorar la relación entre variables operativas y producción.</p>
@@ -504,6 +715,20 @@ Desarrollar un análisis de Business Intelligence &amp; Analytics basado en CRIS
 <h3 id="51-distribucion-de-la-variable-objetivo">5.1 Distribución de la Variable Objetivo</h3>
 <p>La variable <code>falla_maquina</code> presenta <strong>38.5% de eventos de falla</strong> y <strong>61.5% de no falla</strong>. Si bien no se trata de una distribución extremadamente desbalanceada, sí representa un problema de negocio crítico: casi <strong>4 de cada 10 observaciones</strong> reflejan una condición fallida.</p>
 <p>Desde la perspectiva gerencial, este nivel de incidencia justifica plenamente una estrategia de mantenimiento predictivo, ya que la frecuencia de ocurrencia excede lo esperable para una operación madura y controlada.</p>
+<figure>
+    <img src="../resultados/manufactura/viz_01_distribucion_fallas.png" alt="Distribución de la variable objetivo falla_maquina">
+    <figcaption>Fuente: Elaboración propia a partir del gráfico de distribución de la variable objetivo resultante.</figcaption>
+</figure>
+<div class="grafico-resumen">
+    <strong>Síntesis del gráfico:</strong> La distribución muestra que el 61.5% de los registros corresponden a operación sin falla y el 38.5% a fallas confirmadas. Esta proporción desequilibrada pero no extrema es consistente con una operación que ha comenzado a deteriorarse sistémicamente, lo que justifica la implementación de modelos de clasificación con métricas orientadas al recall para maximizar la detección de fallas reales.
+</div>
+<figure>
+    <img src="../resultados/manufactura/viz_02_histogramas.png" alt="Histogramas de variables operativas clave">
+    <figcaption>Fuente: Elaboración propia a partir de los histogramas de distribución de variables operativas resultantes.</figcaption>
+</figure>
+<div class="grafico-resumen">
+    <strong>Síntesis del gráfico:</strong> Los histogramas revelan que la temperatura se distribuye aproximadamente de forma normal centrada en 73 °C, con una cola derecha que alcanza los 108.9 °C, indicando la existencia de equipos en condición de sobrecalentamiento. La vibración presenta una distribución sesgada hacia la derecha, con concentración entre 2 y 6 mm/s y outliers que superan los 8 mm/s, señales de equipos con desgaste mecánico avanzado.
+</div>
 <h3 id="52-analisis-por-planta-y-turno">5.2 Análisis por Planta y Turno</h3>
 <p>Las diferencias por planta son moderadas, pero por turno resultan más marcadas.</p>
 <p><strong>Tasa de falla por planta</strong></p>
@@ -561,6 +786,13 @@ Desarrollar un análisis de Business Intelligence &amp; Analytics basado en CRIS
 </tbody>
 </table>
 <p>El turno <strong>tarde</strong> exhibe la mayor criticidad, con una tasa <strong>10.40 puntos porcentuales</strong> superior a la del turno mañana. Esto constituye un insight de negocio relevante, ya que permite focalizar supervisión, pausas técnicas, inspecciones cortas y dotación de soporte en franjas de mayor exposición.</p>
+<figure>
+    <img src="../resultados/manufactura/viz_05_fallas_planta_turno.png" alt="Tasa de fallas por planta y turno">
+    <figcaption>Fuente: Elaboración propia a partir del gráfico de distribución de fallas por planta y turno resultante.</figcaption>
+</figure>
+<div class="grafico-resumen">
+    <strong>Síntesis del gráfico:</strong> El análisis por planta y turno evidencia que las tres sedes comparten una exposición comparable al riesgo de falla, descartando un problema puntual de una planta específica. Sin embargo, el turno tarde concentra sistemáticamente la mayor tasa de falla en todas las plantas, lo que sugiere que factores como acumulación de calor durante el día, menor disponibilidad del equipo de mantenimiento o mayor intensidad productiva en esa franja horaria contribuyen al fenómeno.
+</div>
 <h3 id="53-analisis-por-tipo-de-maquina">5.3 Análisis por Tipo de Máquina</h3>
 <p>Las tasas de falla por tipo de máquina son relativamente cercanas entre sí, lo que sugiere que el riesgo no está concentrado exclusivamente en una sola familia tecnológica, sino en la combinación entre condición operativa y mantenimiento.</p>
 <table>
@@ -600,6 +832,20 @@ Desarrollar un análisis de Business Intelligence &amp; Analytics basado en CRIS
 </tbody>
 </table>
 <p>Aunque las diferencias son reducidas, las <strong>inyectoras</strong> presentan la tasa más alta. Además, en el conjunto de alto riesgo, las <strong>empacadoras</strong> concentran <strong>63 registros</strong>, equivalentes al <strong>26.0%</strong> del total priorizado.</p>
+<figure>
+    <img src="../resultados/manufactura/viz_03_boxplots_tipo_maquina.png" alt="Boxplots de temperatura y vibración por tipo de máquina">
+    <figcaption>Fuente: Elaboración propia a partir de los boxplots de variables operativas por tipo de máquina resultantes.</figcaption>
+</figure>
+<div class="grafico-resumen">
+    <strong>Síntesis del gráfico:</strong> Los boxplots por tipo de máquina revelan dispersiones operativas diferenciadas: las inyectoras y compresores muestran mayor variabilidad en temperatura, mientras que prensas y tornos CNC exhiben valores de vibración con colas superiores más pronunciadas. Esta heterogeneidad sugiere que los protocolos de mantenimiento deben ser personalizados por familia tecnológica, no estandarizados de forma genérica para todo el parque industrial.
+</div>
+<figure>
+    <img src="../resultados/manufactura/viz_08_eficiencia_tipo.png" alt="Eficiencia operativa por tipo de máquina">
+    <figcaption>Fuente: Elaboración propia a partir del gráfico de eficiencia operativa por tipo de máquina resultante.</figcaption>
+</figure>
+<div class="grafico-resumen">
+    <strong>Síntesis del gráfico:</strong> El análisis de eficiencia por tipo de máquina muestra que, a pesar de tasas de falla similares entre familias, existen diferencias en consumo energético y producción que diferencian su rentabilidad operativa. Este hallazgo orienta hacia una gestión diferenciada del mantenimiento en función no solo de la tasa de falla, sino también del impacto económico por parada según el tipo de activo.
+</div>
 <h3 id="54-correlaciones-clave">5.4 Correlaciones Clave</h3>
 <p>El análisis de correlación con la variable <code>falla_maquina</code> muestra que las asociaciones más importantes son:</p>
 <table>
@@ -649,6 +895,34 @@ Desarrollar un análisis de Business Intelligence &amp; Analytics basado en CRIS
 </tbody>
 </table>
 <p>Estas correlaciones permiten extraer una lectura importante: el riesgo de falla se asocia más con <strong>señales de condición operativa</strong> y <strong>tiempo sin mantenimiento</strong> que con la producción misma.</p>
+<figure>
+    <img src="../resultados/manufactura/viz_04_correlacion.png" alt="Matriz de correlación del dataset de manufactura">
+    <figcaption>Fuente: Elaboración propia a partir de la matriz de correlación del dataset de manufactura resultante.</figcaption>
+</figure>
+<div class="grafico-resumen">
+    <strong>Síntesis del gráfico:</strong> El heatmap de correlaciones confirma que temperatura (0.303), vibración (0.298) y días desde mantenimiento (0.271) son las variables con mayor asociación lineal con la variable objetivo <code>falla_maquina</code>. Adicionalmente, se observa una correlación positiva entre temperatura y consumo energético, coherente con la física del proceso: equipos más calientes consumen más energía, lo que puede utilizarse como señal de alerta temprana accesible incluso sin sensores de temperatura directos.
+</div>
+<figure>
+    <img src="../resultados/manufactura/analisis_correlacion.png" alt="Análisis de correlación detallado con falla de máquina">
+    <figcaption>Fuente: Elaboración propia a partir del análisis de correlación detallado resultante.</figcaption>
+</figure>
+<div class="grafico-resumen">
+    <strong>Síntesis del gráfico:</strong> El análisis de correlación extendido permite observar la relación entre pares de variables operativas con diferenciación por estado de falla. Los equipos fallados presentan consistentemente valores más altos de temperatura y vibración respecto a los no fallados, mientras que variables como horas de operación y producción no muestran separación clara, reafirmando su bajo poder discriminatorio para la predicción de fallas.
+</div>
+<figure>
+    <img src="../resultados/manufactura/viz_07_scatter_temp_vibracion.png" alt="Dispersión temperatura vs vibración por condición de falla">
+    <figcaption>Fuente: Elaboración propia a partir del gráfico de dispersión temperatura vs. vibración por condición de falla resultante.</figcaption>
+</figure>
+<div class="grafico-resumen">
+    <strong>Síntesis del gráfico:</strong> El mapa de dispersión temperatura vs. vibración revela una zona de mayor concentración de fallas en el cuadrante superior derecho (alta temperatura y alta vibración), lo que valida empíricamente el uso combinado de ambas variables como umbrales de alerta. Los equipos sin falla se concentran mayoritariamente en la región de temperatura inferior a 75 °C y vibración inferior a 5.45 mm/s, estableciendo una frontera operativa clara para la intervención preventiva.
+</div>
+<figure>
+    <img src="../resultados/manufactura/viz_06_violin_falla.png" alt="Violín de distribución de variables clave por estado de falla">
+    <figcaption>Fuente: Elaboración propia a partir del gráfico de violín de variables operativas por estado de falla resultante.</figcaption>
+</figure>
+<div class="grafico-resumen">
+    <strong>Síntesis del gráfico:</strong> Los gráficos de violín muestran la distribución completa de temperatura, vibración y días desde mantenimiento separados por condición de falla. Se observa que los equipos con falla presentan distribuciones desplazadas hacia valores más altos en las tres variables, con menor concentración en valores bajos, lo que confirma estadísticamente que la acumulación de estrés operativo y la postergación del mantenimiento son los mecanismos centrales del deterioro.
+</div>
 <h3 id="55-insights-preliminares">5.5 Insights Preliminares</h3>
 <p>Los principales hallazgos exploratorios son los siguientes:</p>
 <ol>
@@ -728,6 +1002,13 @@ Desarrollar un análisis de Business Intelligence &amp; Analytics basado en CRIS
 </tbody>
 </table>
 <p>En términos prácticos, a mayor tiempo sin mantenimiento, mayor vibración y mayor temperatura, mayor probabilidad de falla estimada.</p>
+<figure>
+    <img src="../resultados/manufactura/modelo_01_logistica.png" alt="Matriz de confusión y curva ROC — Regresión Logística">
+    <figcaption>Fuente: Elaboración propia a partir de la matriz de confusión y curva ROC del modelo de regresión logística resultante.</figcaption>
+</figure>
+<div class="grafico-resumen">
+    <strong>Síntesis del gráfico:</strong> La matriz de confusión muestra el balance entre verdaderos positivos (fallas correctamente detectadas) y falsos negativos (fallas no detectadas), siendo el recall del 66.2% el indicador más crítico en un entorno de mantenimiento donde omitir una falla real tiene mayor costo que una alerta preventiva adicional. La curva ROC con AUC de 0.761 confirma que el modelo discrimina razonablemente bien entre condiciones operativas normales y de falla, siendo su desempeño superior al clasificador aleatorio (AUC = 0.5) en todos los umbrales de probabilidad evaluados.
+</div>
 <h3 id="62-modelo-2-clustering-k-means">6.2 Modelo 2: Clustering K-Means</h3>
 <p>El modelo K-Means se implementó con <strong>k = 4</strong> por interpretabilidad gerencial, obteniéndose un <strong>Silhouette score de 0.082</strong>. Aunque este valor sugiere separación moderada-baja entre clusters, la segmentación resultó útil para diferenciar perfiles de operación y riesgo.</p>
 <table>
@@ -824,6 +1105,20 @@ Desarrollar un análisis de Business Intelligence &amp; Analytics basado en CRIS
 </tbody>
 </table>
 <p>Este resultado sugiere que el clustering no define solamente “máquinas buenas o malas”, sino configuraciones operativas con distintos mecanismos de exposición.</p>
+<figure>
+    <img src="../resultados/manufactura/modelo_02_elbow_kmeans.png" alt="Gráfico del codo para selección óptima de k en K-Means">
+    <figcaption>Fuente: Elaboración propia a partir del gráfico del codo (Elbow Method) de K-Means resultante.</figcaption>
+</figure>
+<div class="grafico-resumen">
+    <strong>Síntesis del gráfico:</strong> El método del codo muestra la reducción de inercia (suma de distancias al centroide) conforme aumenta el número de clusters k. Se observa un punto de inflexión alrededor de k = 4, que justifica la elección de cuatro segmentos operativos. A partir de ese punto, incrementar k adiciona complejidad sin reducir sustancialmente la inercia, lo que valida el balance entre parsimonia del modelo e interpretabilidad gerencial.
+</div>
+<figure>
+    <img src="../resultados/manufactura/modelo_02_clusters_pca.png" alt="Visualización de clusters K-Means mediante reducción PCA">
+    <figcaption>Fuente: Elaboración propia a partir del gráfico de clusters K-Means con reducción de dimensionalidad PCA resultante.</figcaption>
+</figure>
+<div class="grafico-resumen">
+    <strong>Síntesis del gráfico:</strong> La proyección PCA de los cuatro clusters muestra la posición relativa de los segmentos Eficientes, Estándar, Alerta y Críticas en el espacio bidimensional de mayor varianza explicada. Si bien la separación no es perfectamente nítida (Silhouette 0.082), los centroides de los segmentos de mayor riesgo (Alerta y Críticas) se posicionan en regiones claramente diferenciadas, lo que otorga validez operativa a la segmentación para orientar planes de mantenimiento escalonados.
+</div>
 <h3 id="63-modelo-3-arbol-de-decision">6.3 Modelo 3: Árbol de Decisión</h3>
 <p>El árbol de decisión entregó un rendimiento menor en exactitud global, pero mayor facilidad de interpretación.</p>
 <table>
@@ -885,6 +1180,20 @@ Desarrollar un análisis de Business Intelligence &amp; Analytics basado en CRIS
 <li>si la <strong>vibración es menor o igual a 5.45 mm/s</strong>, pero los <strong>días sin mantenimiento superan 165.5</strong> y la temperatura es elevada, el riesgo también se incrementa.</li>
 </ul>
 <p>Estas reglas son particularmente útiles para protocolos de inspección y checklist de mantenimiento.</p>
+<figure>
+    <img src="../resultados/manufactura/modelo_03_arbol_visual.png" alt="Estructura visual del árbol de decisión">
+    <figcaption>Fuente: Elaboración propia a partir del diagrama estructural del árbol de decisión resultante.</figcaption>
+</figure>
+<div class="grafico-resumen">
+    <strong>Síntesis del gráfico:</strong> El árbol de decisión con profundidad máxima de 5 niveles muestra cómo las reglas de corte se encadenan jerárquicamente. La primera bifurcación se da en vibración &gt; 5.45 mm/s, confirmando su rol como señal más discriminatoria. Las ramas subsiguientes integran días desde mantenimiento y temperatura para refinar la clasificación de riesgo, generando reglas que pueden ser operacionalizadas directamente en checklists de inspección de campo sin necesidad de software especializado.
+</div>
+<figure>
+    <img src="../resultados/manufactura/modelo_03_arbol_resultados.png" alt="Métricas de evaluación del árbol de decisión">
+    <figcaption>Fuente: Elaboración propia a partir del gráfico de resultados del árbol de decisión resultante.</figcaption>
+</figure>
+<div class="grafico-resumen">
+    <strong>Síntesis del gráfico:</strong> La evaluación del árbol de decisión muestra un recall de 70.1%, superior al de la regresión logística (66.2%), lo que lo convierte en el modelo más sensible para detectar fallas reales. No obstante, su menor accuracy global (60.0%) y AUC-ROC (0.650) reflejan una mayor tasa de falsas alarmas. La combinación estratégica de ambos modelos —regresión logística para scoring de riesgo y árbol para generación de reglas operativas— maximiza la utilidad analítica del proyecto.
+</div>
 <h3 id="64-modelo-4-regresion-lineal-multiple">6.4 Modelo 4: Regresión Lineal Múltiple</h3>
 <p>El modelo de regresión lineal sobre <code>produccion_unidades</code> arrojó los siguientes resultados:</p>
 <table>
@@ -918,6 +1227,13 @@ Desarrollar un análisis de Business Intelligence &amp; Analytics basado en CRIS
 <li>disciplina operativa y condiciones ambientales.</li>
 </ul>
 <p>Por tanto, el bajo R² es un hallazgo de negocio: <strong>la productividad no debe ser inferida solo a partir de señales de condición mecánica</strong>.</p>
+<figure>
+    <img src="../resultados/manufactura/modelo_04_regresion_lineal.png" alt="Gráfico de dispersión de residuos — Regresión Lineal Múltiple">
+    <figcaption>Fuente: Elaboración propia a partir del gráfico de residuos de la regresión lineal múltiple resultante.</figcaption>
+</figure>
+<div class="grafico-resumen">
+    <strong>Síntesis del gráfico:</strong> El gráfico de residuos de la regresión lineal múltiple sobre producción muestra una distribución sin patrón estructural claro (homocedasticidad aproximada), pero con valores predichos que no capturan la variabilidad real de la producción. El R² negativo (-0.009) confirma que el conjunto de variables operativas mecánicas no es suficiente para explicar la productividad, señalando la necesidad de incorporar variables de proceso, logística y factor humano en futuros modelos de producción.
+</div>
 <h3 id="65-comparacion-de-tecnicas">6.5 Comparación de Técnicas</h3>
 <table>
 <thead>
@@ -967,6 +1283,13 @@ Desarrollar un análisis de Business Intelligence &amp; Analytics basado en CRIS
 <li><strong>clustering</strong> para segmentación de mantenimiento;</li>
 <li><strong>regresión lineal</strong> como diagnóstico de variables faltantes en productividad.</li>
 </ul>
+<figure>
+    <img src="../resultados/manufactura/comparacion_modelos.png" alt="Comparación de métricas entre modelos analíticos">
+    <figcaption>Fuente: Elaboración propia a partir del gráfico comparativo de métricas entre modelos resultante.</figcaption>
+</figure>
+<div class="grafico-resumen">
+    <strong>Síntesis del gráfico:</strong> El gráfico de comparación de modelos permite visualizar de forma integrada las métricas clave de accuracy, recall y AUC-ROC para regresión logística y árbol de decisión. La regresión logística lidera en accuracy (69.5%) y AUC-ROC (0.761), mientras que el árbol destaca en recall (70.1%). Esta comparación valida la decisión de adoptar una arquitectura analítica complementaria donde cada técnica aporta un rol diferenciado en la estrategia de mantenimiento predictivo.
+</div>
 <h2 id="7-interpretacion-gerencial">7. INTERPRETACIÓN GERENCIAL</h2>
 <h3 id="71-traduccion-de-metricas-a-lenguaje-de-negocio">7.1 Traducción de Métricas a Lenguaje de Negocio</h3>
 <p>Para un tomador de decisiones, la interpretación de métricas debe centrarse en impacto operativo:</p>
@@ -1181,55 +1504,23 @@ Desarrollar un análisis de Business Intelligence &amp; Analytics basado en CRIS
 <li>ISO 55000. (2014). <em>Asset management — Overview, principles and terminology</em>. International Organization for Standardization.</li>
 </ol>
 <h2 id="anexos">ANEXOS</h2>
-<h3 id="anexo-a-codigo-python-resumen">Anexo A: Código Python Resumen</h3>
-<pre><code class="language-python">import pandas as pd
-from sklearn.model_selection import train_test_split, cross_val_score
-from sklearn.preprocessing import LabelEncoder, StandardScaler
-from sklearn.linear_model import LogisticRegression, LinearRegression
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.cluster import KMeans
-from sklearn.metrics import accuracy_score, recall_score, f1_score, roc_auc_score
-
-df = pd.read_csv(&quot;data/manufactura/dataset_manufactura_1000.csv&quot;)
-
-for col in [&quot;planta&quot;, &quot;tipo_maquina&quot;, &quot;turno&quot;]:
-    df[f&quot;{col}_cod&quot;] = LabelEncoder().fit_transform(df[col])
-
-vars_modelo = [
-    &quot;temperatura_c&quot;, &quot;vibracion_mm_s&quot;, &quot;presion_bar&quot;, &quot;horas_operacion&quot;,
-    &quot;antiguedad_anios&quot;, &quot;dias_desde_mantenimiento&quot;, &quot;tasa_defectos_pct&quot;,
-    &quot;consumo_energia_kwh&quot;, &quot;planta_cod&quot;, &quot;tipo_maquina_cod&quot;, &quot;turno_cod&quot;
-]
-
-X = df[vars_modelo]
-y = df[&quot;falla_maquina&quot;]
-
-X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.2, random_state=42, stratify=y
-)
-
-scaler = StandardScaler()
-X_train_sc = scaler.fit_transform(X_train)
-X_test_sc = scaler.transform(X_test)
-
-modelo_log = LogisticRegression(max_iter=1000)
-modelo_log.fit(X_train_sc, y_train)
-y_prob = modelo_log.predict_proba(X_test_sc)[:, 1]
-y_pred = modelo_log.predict(X_test_sc)
-
-modelo_tree = DecisionTreeClassifier(max_depth=5, class_weight=&quot;balanced&quot;, random_state=42)
-modelo_tree.fit(X_train, y_train)
-
-kmeans = KMeans(n_clusters=4, random_state=42, n_init=10)
-clusters = kmeans.fit_predict(StandardScaler().fit_transform(X))
-
-modelo_reg = LinearRegression()
-modelo_reg.fit(
-    df[[&quot;temperatura_c&quot;, &quot;vibracion_mm_s&quot;, &quot;presion_bar&quot;, &quot;horas_operacion&quot;,
-        &quot;consumo_energia_kwh&quot;, &quot;dias_desde_mantenimiento&quot;, &quot;tasa_defectos_pct&quot;]],
-    df[&quot;produccion_unidades&quot;]
-)
-</code></pre>
+<h3 id="anexo-a-repositorio-del-proyecto">Anexo A: Repositorio del Proyecto</h3>
+<p>El código fuente completo del proyecto —incluyendo scripts de análisis exploratorio, entrenamiento de modelos, generación de visualizaciones y aplicación de alertas en Streamlit— se encuentra disponible en el siguiente repositorio de GitHub:</p>
+<div class="repo-link">
+    🔗 <strong>Repositorio GitHub:</strong><br>
+    <a href="https://github.com/ochafloquet/utp-mgti-bia-py-manufacture" target="_blank">
+        https://github.com/ochafloquet/utp-mgti-bia-py-manufacture
+    </a>
+    <br><br>
+    <strong>Estructura principal:</strong>
+    <ul style="margin-top:6px; margin-left:20px; font-size:9.5pt;">
+        <li><code>data/manufactura/</code> — Dataset original y archivos de entrada</li>
+        <li><code>src/</code> — Scripts Python de análisis, modelado y visualización</li>
+        <li><code>resultados/manufactura/</code> — Gráficos e imágenes generados por el análisis</li>
+        <li><code>docs/</code> — Informe académico HTML</li>
+        <li><code>app/</code> — Aplicación Streamlit de alertas predictivas</li>
+    </ul>
+</div>
 <h3 id="anexo-b-glosario-de-terminos">Anexo B: Glosario de Términos</h3>
 <table>
 <thead>
